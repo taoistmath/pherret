@@ -12,8 +12,8 @@ if ($_SESSION['username'] == NULL)
 
 //Set up paths
 //$githubLoc = 'https://github.com/dandb/helios/blob/'.$branch.'/tools/regression/features/dandb'; //Set url to github folder that contains features
-$behatLoc = 'tools/regression/'; //Set to relative path to location of behat.yml file
-$featureLoc = 'features/dandb'; //Set to local repo folder that contains features
+$behatLoc = ''; //Set to relative path to location of behat.yml file
+$featureLoc = ''; //Set to local repo folder that contains features
 $localRepo = $behatLoc . $featureLoc; //Set to local repo folder that contains features
 
 //Timestamp for creating HTML file for test results
@@ -35,7 +35,7 @@ $features = checkmarkValues();
 appendFilterToFeature($features);
 
 //Get the execution string
-echo $execution = writeExecutionString();
+$execution = writeExecutionString();
 
 $output = shell_exec("cd " . $behatLoc . " && " . $execution);
 
