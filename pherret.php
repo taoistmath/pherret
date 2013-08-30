@@ -11,9 +11,11 @@ if ($_SESSION['username'] == NULL)
 //    $branch = 'INFRASYS-1913-Stable'; //Set to same branch as repository.
 
 //Set up paths
-//$githubLoc = 'https://github.com/dandb/helios/blob/'.$branch.'/tools/regression/features/dandb'; //Set url to github folder that contains features
-$behatLoc = ''; //Set to relative path to location of behat.yml file
-$featureLoc = ''; //Set to local repo folder that contains features
+//$repoLoc = '/var/www/helios/tools/regression'; //Set to absolute path to behat.yml file in your repository
+//shell_exec("cp -r " . $repoLoc . " ./tools");
+
+$behatLoc = 'tools/regression/'; //Set to relative path to location of behat.yml file
+$featureLoc = 'features/dandb'; //Set to local repo folder that contains features
 $localRepo = $behatLoc . $featureLoc; //Set to local repo folder that contains features
 
 //Timestamp for creating HTML file for test results
@@ -32,7 +34,7 @@ $browser = strtolower($_GET['browser']);
 $features = checkmarkValues();
 
 //Append username to the selected features
-appendFilterToFeature($features);
+$temp_file_array = appendFilterToFeature($features);
 
 //Get the execution string
 $execution = writeExecutionString();
@@ -40,7 +42,7 @@ $execution = writeExecutionString();
 $output = shell_exec("cd " . $behatLoc . " && " . $execution);
 
 //Remove username from the selected features
-//removeFilterFromFeature($features);
+removeFilterFromFeature($temp_file_array);
 
 ?>
 
@@ -108,6 +110,12 @@ $output = shell_exec("cd " . $behatLoc . " && " . $execution);
                 <button class="btn btn-primary" type="submit">Reset Features</button>
         </div>
     </form>
+
+<!--    <form id="updateRepo" name="updateRepo" method="GET" action="update.php">-->
+<!--        <div class="controls controls-row">-->
+<!--            <button class="btn btn-primary" type="submit">Update Repository</button>-->
+<!--        </div>-->
+<!--    </form>-->
 
     <?php
     if ($features != NULL) {
@@ -211,9 +219,8 @@ function listFolderFiles($dir, $exclude)
                     </div>
                     <br />';
                 } else {
-                    //Will open GitHub repo location for branch entered
                     echo '<input type="checkbox" name="feature[]" id="feature" value="' . $folder . '/' . $file . '" >
-                        <a href="' . ltrim($localRepo . $folder . '/' . $file, './') . '"target="_blank">' . $file . '</a><br />';
+                        <a href="' . ltrim($localRepo . '/' .$folder . '/' . $file, './') . '"target="_blank">' . $file . '</a><br />';
                 }
                 if (is_dir($dir . '/' . $file)) listFolderFiles($dir . '/' . $file, $exclude);
             }
@@ -231,33 +238,42 @@ function checkmarkValues()
 
 function appendFilterToFeature($features)
 {
-    global $localRepo, $username;
+    global $localRepo, $username, $behatLoc;
 
+    $temp_file_array = array();
     foreach ($features as $feature) {
         $path_to_file = $localRepo . "/" . $feature;
-        $get_contents = str_replace("Feature", "@" . $username . "\nFeature", file_get_contents($path_to_file));
-        file_put_contents($path_to_file.date("YmdHms").".feature", $get_contents);
+        $temp_file =$path_to_file.date("YmdHms").".feature";
+        file_put_contents($temp_file, str_replace("Scenario", "@" . $username . "\nScenario", file_get_contents($path_to_file)));
+        array_push($temp_file_array,$temp_file);
     }
+
+    $temp_behat_loc = $behatLoc."behat.yml";
+    file_put_contents($temp_behat_loc, str_replace("~@wip", "@".$username."&&~@wip", file_get_contents($temp_behat_loc)));
+
+    return $temp_file_array;
 }
 
-function removeFilterFromFeature($features)
+function removeFilterFromFeature($temp_file_array)
 {
-    global $localRepo;
+    global $behatLoc, $username;
 
-    foreach ($features as $feature) {
-        $path_to_file =$localRepo . "/" . $feature;
-        if (is_File($path_to_file))
+    foreach($temp_file_array as $temp_file){
+        if (is_File($temp_file))
         {
-            unlink($path_to_file);
+            unlink($temp_file);
         }
-//        file_put_contents($path_to_file, str_replace("@" . $username, "", file_get_contents($path_to_file)));
     }
+
+    $temp_behat_loc = $behatLoc."behat.yml";
+    file_put_contents($temp_behat_loc, str_replace("@".$username."&&", "", file_get_contents($temp_behat_loc)));
+
 }
 
 function writeExecutionString()
 {
     global $environment, $browser, $username, $featureLoc;
-    $executionString = "bin/behat --profile " . $environment . "_" . $browser . " --tags @" . $username . " " . $featureLoc;
+    $executionString = "bin/behat --profile " . $environment . "_" . $browser . " " . $featureLoc;
 
     return $executionString;
 }
