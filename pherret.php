@@ -105,7 +105,7 @@ removeFilterFromFeature($temp_file_array);
 
     <h1>PHERRET</h1>
 
-    <form id="resetFilter" name="resetFilter" method="GET" action="gfogelberg.php">
+    <form id="resetFilter" name="resetFilter" method="GET" action="pherret.php">
         <div class="controls controls-row">
                 <button class="btn btn-primary" type="submit">Reset Features</button>
         </div>
@@ -128,7 +128,7 @@ removeFilterFromFeature($temp_file_array);
     }
     ?>
 
-    <form id="featureFilter" name="featureFilter" method="GET" action="gfogelberg.php">
+    <form id="featureFilter" name="featureFilter" method="GET" action="pherret.php">
 
         <div class="row">
             <div class="span1">
@@ -249,7 +249,7 @@ function appendFilterToFeature($features)
     }
 
     $temp_behat_loc = $behatLoc."behat.yml";
-    file_put_contents($temp_behat_loc, str_replace("~@wip", "@".$username."&&~@wip", file_get_contents($temp_behat_loc)));
+    file_put_contents($temp_behat_loc, str_replace("~@mixed", "@".$username, file_get_contents($temp_behat_loc)));
 
     return $temp_file_array;
 }
@@ -266,7 +266,7 @@ function removeFilterFromFeature($temp_file_array)
     }
 
     $temp_behat_loc = $behatLoc."behat.yml";
-    file_put_contents($temp_behat_loc, str_replace("@".$username."&&", "", file_get_contents($temp_behat_loc)));
+    file_put_contents($temp_behat_loc, str_replace("@".$username, "~@mixed", file_get_contents($temp_behat_loc)));
 
 }
 

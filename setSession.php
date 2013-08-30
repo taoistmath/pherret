@@ -11,5 +11,5 @@ session_start();
 //Set username session variable
 $_SESSION['username'] = $_POST['username'];
 
-header("Location: http://pherret.local/gfogelberg.php");
+header("Location: http://pherret.local/pherret.php");
 ?>
