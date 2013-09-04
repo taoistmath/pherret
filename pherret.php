@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <?php
-session_start();
-
-if ($_SESSION['username'] == NULL)
-    header("Location: http://pherret.local/login.php");
+//session_start();
+//
+//if ($_SESSION['username'] == NULL)
+//    header("Location: http://pherret.local/login.php");
 
 ////Get the branch
 //$branch = $_GET['gitBranch'];
@@ -11,8 +11,8 @@ if ($_SESSION['username'] == NULL)
 //    $branch = 'INFRASYS-1913-Stable'; //Set to same branch as repository.
 
 //Set up paths
-//$repoLoc = '/var/www/helios/tools/regression'; //Set to absolute path to behat.yml file in your repository
-//shell_exec("cp -r " . $repoLoc . " ./tools");
+//$repoLoc = '/var/www/helios/tools/regression/features/dandb/mixed_stack'; //Set to absolute path to behat.yml file in your repository
+//shell_exec("cp -r " . $repoLoc . " ./tools/regression/features/dandb");
 
 $behatLoc = 'tools/regression/'; //Set to relative path to location of behat.yml file
 $featureLoc = 'features/dandb'; //Set to local repo folder that contains features
@@ -22,13 +22,19 @@ $localRepo = $behatLoc . $featureLoc; //Set to local repo folder that contains f
 $resultsFile = date("YmdHms") . ".html";
 
 //Get username
-$username = $_SESSION['username'];
+$username = "placeholder";//$_SESSION['username'];
 
 //Get the environment
+if(isset($_GET['environment']))
+{
 $environment = strtolower($_GET['environment']);
+}
 
 //Get the browser
+if(isset($_GET['browser']))
+{
 $browser = strtolower($_GET['browser']);
+}
 
 //Get the selected features
 $features = checkmarkValues();
@@ -111,9 +117,9 @@ removeFilterFromFeature($temp_file_array);
         </div>
     </form>
 
-<!--    <form id="updateRepo" name="updateRepo" method="GET" action="update.php">-->
+<!--    <form id="updateRepo" name="updateRepo" method="GET" action="updateRepo.php">-->
 <!--        <div class="controls controls-row">-->
-<!--            <button class="btn btn-primary" type="submit">Update Repository</button>-->
+<!--            <button class="btn btn-primary" type="submit">Update Repository - doesn't work</button>-->
 <!--        </div>-->
 <!--    </form>-->
 
@@ -150,11 +156,11 @@ removeFilterFromFeature($temp_file_array);
             </select>
 
             <select class="span2" id="brower" name="browser">
-                <option <?php if ($_GET['browser'] == 'Firefox') { ?>selected="true" <?php }; ?>value="Firefox">
-                    Firefox
-                </option>
                 <option <?php if ($_GET['browser'] == 'Chrome') { ?>selected="true" <?php }; ?>value="Chrome">
                     Chrome
+                </option>
+                <option <?php if ($_GET['browser'] == 'Firefox') { ?>selected="true" <?php }; ?>value="Firefox">
+                    Firefox
                 </option>
             </select>
         </div>
@@ -183,6 +189,7 @@ removeFilterFromFeature($temp_file_array);
 </div>
 
 <?php
+
 function resultsLink()
 {
     global $resultsFile;
@@ -272,7 +279,7 @@ function removeFilterFromFeature($temp_file_array)
 
 function writeExecutionString()
 {
-    global $environment, $browser, $username, $featureLoc;
+    global $environment, $browser, $featureLoc;
     $executionString = "bin/behat --profile " . $environment . "_" . $browser . " " . $featureLoc;
 
     return $executionString;
