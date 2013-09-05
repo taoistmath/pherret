@@ -18,11 +18,8 @@ $behatLoc = 'tools/regression/'; //Set to relative path to location of behat.yml
 $featureLoc = 'features/dandb'; //Set to local repo folder that contains features
 $localRepo = $behatLoc . $featureLoc; //Set to local repo folder that contains features
 
-//Timestamp for creating HTML file for test results
-$resultsFile = date("YmdHms") . ".html";
-
 //Get username
-$username = "placeholder";//$_SESSION['username'];
+$username = $_GET["username"];
 
 //Get the environment
 if(isset($_GET['environment']))
@@ -35,20 +32,6 @@ if(isset($_GET['browser']))
 {
 $browser = strtolower($_GET['browser']);
 }
-
-//Get the selected features
-$features = checkmarkValues();
-
-//Append username to the selected features
-$temp_file_array = appendFilterToFeature($features);
-
-//Get the execution string
-$execution = writeExecutionString();
-
-$output = shell_exec("cd " . $behatLoc . " && " . $execution);
-
-//Remove username from the selected features
-removeFilterFromFeature($temp_file_array);
 
 ?>
 
@@ -99,7 +82,7 @@ removeFilterFromFeature($temp_file_array);
                     <!--                    <li class="active"><a href="#">Home</a></li>-->
                     <!--                    <li><a href="#about">About</a></li>-->
                     <!--                    <li><a href="#contact">Contact</a></li>-->
-                    <li><a href="/logout.php">Sign Out</a></li>
+<!--                    <li><a href="/logout.php">Sign Out</a></li>-->
                 </ul>
             </div>
             <!--/.nav-collapse -->
@@ -123,30 +106,23 @@ removeFilterFromFeature($temp_file_array);
 <!--        </div>-->
 <!--    </form>-->
 
-    <?php
-    if ($features != NULL) {
-        echo '<div class="results">';
-        //Print the output to a file
-        writeResultsToFile();
 
-        resultsLink();
-        echo '</div>';
-    }
-    ?>
-
-    <form id="featureFilter" name="featureFilter" method="GET" action="pherret.php">
+    <form id="featureFilter" name="featureFilter" method="GET" action="pherretResults.php">
 
         <div class="row">
-            <div class="span1">
+            <div class="span2">
                 <p>Environment</p>
             </div>
             <div class="span2">
                 <p>Browser</p>
             </div>
+            <div class="span2">
+                <p>Username</p>
+            </div>
         </div>
 
         <div class="controls controls-row">
-            <select class="span1" id="environment" name="environment">
+            <select class="span2" id="environment" name="environment">
                 <option <?php if ($_GET['environment'] == 'QA') { ?>selected="true" <?php }; ?>value="QA">QA
                 </option>
                 <option <?php if ($_GET['environment'] == 'STG') { ?>selected="true" <?php }; ?>value="STG">STG
@@ -156,13 +132,16 @@ removeFilterFromFeature($temp_file_array);
             </select>
 
             <select class="span2" id="brower" name="browser">
-                <option <?php if ($_GET['browser'] == 'Chrome') { ?>selected="true" <?php }; ?>value="Chrome">
-                    Chrome
-                </option>
                 <option <?php if ($_GET['browser'] == 'Firefox') { ?>selected="true" <?php }; ?>value="Firefox">
                     Firefox
                 </option>
+                <option <?php if ($_GET['browser'] == 'Chrome') { ?>selected="true" <?php }; ?>value="Chrome">
+                    Chrome
+                </option>
             </select>
+
+            <input class="span2" type="text" id="username" name="username" placeholder="Username">
+
         </div>
 
 <!--            <div class="span2">-->
@@ -190,26 +169,6 @@ removeFilterFromFeature($temp_file_array);
 
 <?php
 
-function resultsLink()
-{
-    global $resultsFile;
-    echo "
-    <h4>
-    <a href='" . $resultsFile . "' target='_blank' style='text-decoration:underline'>Click To See Test Results</a>
-    </h4>
-    ";
-
-}
-
-function writeResultsToFile()
-{
-    global $resultsFile, $output;
-    $fo = fopen($resultsFile, 'x');
-
-    fwrite($fo, "<!DOCTYPE html><pre>$output</pre>");
-    fclose($fo);
-
-}
 
 function listFolderFiles($dir, $exclude)
 {
@@ -233,56 +192,6 @@ function listFolderFiles($dir, $exclude)
             }
         }
     }
-}
-
-function checkmarkValues()
-{
-    if (isset($_GET['feature'])) {
-        $feature = $_GET['feature'];
-        return $feature;
-    }
-}
-
-function appendFilterToFeature($features)
-{
-    global $localRepo, $username, $behatLoc;
-
-    $temp_file_array = array();
-    foreach ($features as $feature) {
-        $path_to_file = $localRepo . "/" . $feature;
-        $temp_file =$path_to_file.date("YmdHms").".feature";
-        file_put_contents($temp_file, str_replace("Scenario", "@" . $username . "\nScenario", file_get_contents($path_to_file)));
-        array_push($temp_file_array,$temp_file);
-    }
-
-    $temp_behat_loc = $behatLoc."behat.yml";
-    file_put_contents($temp_behat_loc, str_replace("~@mixed", "@".$username, file_get_contents($temp_behat_loc)));
-
-    return $temp_file_array;
-}
-
-function removeFilterFromFeature($temp_file_array)
-{
-    global $behatLoc, $username;
-
-    foreach($temp_file_array as $temp_file){
-        if (is_File($temp_file))
-        {
-            unlink($temp_file);
-        }
-    }
-
-    $temp_behat_loc = $behatLoc."behat.yml";
-    file_put_contents($temp_behat_loc, str_replace("@".$username, "~@mixed", file_get_contents($temp_behat_loc)));
-
-}
-
-function writeExecutionString()
-{
-    global $environment, $browser, $featureLoc;
-    $executionString = "bin/behat --profile " . $environment . "_" . $browser . " " . $featureLoc;
-
-    return $executionString;
 }
 
 ?>
