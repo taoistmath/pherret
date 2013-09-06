@@ -44,29 +44,16 @@ $execution = writeExecutionString();
 $output = shell_exec("cd " . $behatLoc . " && " . $execution);
 
 //Remove username from the selected features
-removeFilterFromFeature($temp_file_array);
+removeFilterFromFeature($features);
 
 echo '<div class="results">';
 //Print the output to a file
+
 writeResultsToFile();
 
 resultsLink();
 echo '</div>';
 }
-
-?>
-
-<form id="featureFilter" name="featureFilter" method="GET" action="pherret.php">
-
-    <div class="span2">
-        <label><br></label>
-        <button class="btn btn-primary" type="submit">Return to List</button>
-        <label><br></label>
-    </div>
-
-</form>
-
-<?php
 
 function resultsLink()
 {
@@ -109,29 +96,23 @@ function appendFilterToFeature($features)
 {
     global $localRepo, $username, $behatLoc;
 
-    $temp_file_array = array();
     foreach ($features as $feature) {
         $path_to_file = $localRepo . "/" . $feature;
-        $temp_file =$path_to_file.date("YmdHms").".feature";
-        file_put_contents($temp_file, str_replace("Scenario", "@" . $username . "\nScenario", file_get_contents($path_to_file)));
-        array_push($temp_file_array,$temp_file);
+        file_put_contents($path_to_file, str_replace("Scenario", "@" . $username . "\nScenario", file_get_contents($path_to_file)));
     }
 
     $temp_behat_loc = $behatLoc."behat.yml";
     file_put_contents($temp_behat_loc, str_replace("~@mixed", "@".$username, file_get_contents($temp_behat_loc)));
 
-    return $temp_file_array;
 }
 
-function removeFilterFromFeature($temp_file_array)
+function removeFilterFromFeature($features)
 {
-    global $behatLoc, $username;
+    global $localRepo, $behatLoc, $username;
 
-    foreach($temp_file_array as $temp_file){
-        if (is_File($temp_file))
-        {
-            unlink($temp_file);
-        }
+    foreach ($features as $feature) {
+        $path_to_file = $localRepo . "/" . $feature;
+        file_put_contents($path_to_file, str_replace("@" . $username."\n", "", file_get_contents($path_to_file)));
     }
 
     $temp_behat_loc = $behatLoc."behat.yml";
@@ -140,3 +121,15 @@ function removeFilterFromFeature($temp_file_array)
 }
 
 ?>
+
+<form id="featureFilter" name="featureFilter" method="GET" action="pherret.php">
+
+    <div class="span2">
+        <label><br></label>
+        <button class="btn btn-primary" type="submit">Return to List</button>
+        <label><br></label>
+    </div>
+
+</form>
+
+
