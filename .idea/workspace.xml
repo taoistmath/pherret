@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9db16eaa-2022-476b-8721-dace1ae95a24" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/deleteOldFile.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pherret.php" afterPath="$PROJECT_DIR$/pherret.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pherretResults.php" afterPath="$PROJECT_DIR$/pherretResults.php" />
     </list>
     <ignored path="pherret.iws" />
@@ -24,46 +22,56 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="pherret.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pherret.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="214" column="59" selection-start="8290" selection-end="8290" vertical-scroll-proportion="-17.291666">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="behat.yml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tools/regression/behat.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="12" selection-start="1034" selection-end="1034" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pherretResults.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pherretResults.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="8" selection-start="542" selection-end="631" vertical-scroll-proportion="-13.125">
-              <folding>
-                <element signature="e#6#165#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="deleteOldFile.php" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/deleteOldFile.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="0" selection-start="412" selection-end="412" vertical-scroll-proportion="0.42759407">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.4797769">
+      <split-first>
+        <leaf>
+          <file leaf-file-name="pherret.php" pinned="false" current="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/pherret.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="115" column="30" selection-start="4233" selection-end="4233" vertical-scroll-proportion="0.3298611">
+                  <folding>
+                    <element signature="e#22#40#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="behat.yml" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/tools/regression/behat.yml">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="49" column="19" selection-start="1562" selection-end="1562" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="deleteOldFile.php" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/deleteOldFile.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="25" column="0" selection-start="412" selection-end="412" vertical-scroll-proportion="-15.625">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="pherretResults.php" pinned="false" current="true" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/pherretResults.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="130" column="10" selection-start="4254" selection-end="4254" vertical-scroll-proportion="0.6701389">
+                  <folding>
+                    <element signature="e#22#181#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -78,8 +86,8 @@
       <list>
         <option value="$PROJECT_DIR$/tools/regression/features/dandb/cms_features/cms_about_us.feature" />
         <option value="$PROJECT_DIR$/pherret.php" />
-        <option value="$PROJECT_DIR$/pherretResults.php" />
         <option value="$PROJECT_DIR$/deleteOldFile.php" />
+        <option value="$PROJECT_DIR$/pherretResults.php" />
       </list>
     </option>
   </component>
@@ -181,7 +189,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../helios" />
   </component>
   <component name="PublishConfig">
     <servers>
@@ -302,7 +310,9 @@
     <entry file="file://$PROJECT_DIR$/pherret.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="159" column="0" selection-start="6046" selection-end="6046" vertical-scroll-proportion="0.0">
-          <folding />
+          <folding>
+            <element signature="e#22#40#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -317,7 +327,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="106" column="0" selection-start="2561" selection-end="2561" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="e#6#165#0" expanded="true" />
+            <element signature="e#22#181#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -329,31 +339,33 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tools/regression/behat.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="12" selection-start="1034" selection-end="1034" vertical-scroll-proportion="0.0">
+        <state line="49" column="19" selection-start="1562" selection-end="1562" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/deleteOldFile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="0" selection-start="412" selection-end="412" vertical-scroll-proportion="-15.625">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pherret.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="214" column="59" selection-start="8290" selection-end="8290" vertical-scroll-proportion="-17.291666">
-          <folding />
+        <state line="115" column="30" selection-start="4233" selection-end="4233" vertical-scroll-proportion="0.3298611">
+          <folding>
+            <element signature="e#22#40#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pherretResults.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="8" selection-start="542" selection-end="631" vertical-scroll-proportion="-13.125">
+        <state line="130" column="10" selection-start="4254" selection-end="4254" vertical-scroll-proportion="0.6701389">
           <folding>
-            <element signature="e#6#165#0" expanded="true" />
+            <element signature="e#22#181#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/deleteOldFile.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="0" selection-start="412" selection-end="412" vertical-scroll-proportion="0.42759407">
-          <folding />
         </state>
       </provider>
     </entry>
