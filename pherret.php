@@ -155,7 +155,7 @@ if(isset($_GET['browser']))
         <button class="btn btn-primary" type="submit">Start Features</button>
         <label><br></label>
 
-        <?php listFolderFiles($localRepo, array('index.php', 'edit_page.php', 'pages', 'full', 'sanity')); checkmarkValues()?>
+        <?php listFolderFiles($localRepo, array('index.php', 'edit_page.php', 'pages', 'full', 'sanity')); //checkmarkValues()?>
 
         <div class="span2">
             <label><br></label>

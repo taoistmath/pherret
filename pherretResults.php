@@ -10,45 +10,9 @@
 
 session_start();
 
-//Timestamp for creating HTML file for test results
 $behatLoc = 'tools/regression/'; //Set to relative path to location of behat.yml file
 $featureLoc = 'features/dandb'; //Set to local repo folder that contains features
 $localRepo = $behatLoc . $featureLoc; //Set to local repo folder that contains features
-
-//Get username
-$username = $_GET["username"];
-if($username == "")
-{
-    echo "Please Return to List and enter your Username.";
-} else {
-
-    $_SESSION['username'] = $username;
-
-//Get the environment
-    if(isset($_GET['environment']))
-    {
-        $environment = strtolower($_GET['environment']);
-    }
-
-//Get the browser
-    if(isset($_GET['browser']))
-    {
-        $browser = strtolower($_GET['browser']);
-    }
-
-//Get the selected features
-    $features = checkmarkValues();
-
-//Append username to the selected features
-    $temp_file_array = appendFilterToFeature($features);
-
-//Commit the execution string
-    commitExecution();
-
-//Remove username from the selected features
-    removeFilterFromFeature($features);
-
-}
 
 ?>
 
@@ -110,44 +74,63 @@ if($username == "")
 <div class="container">
 
     <h1>PHERRET</h1>
-<div class="btn-group">
-<p>
-    <form id="featureFilter" name="featureFilter" method="GET" action="pherret.php">
-        <div class="span2">
-            <label><br></label>
-            <button class="btn btn-primary" type="submit">Return to List</button>
-            <label><br></label>
-        </div>
-    </form>
 
-    <form id="deleteOldFile" name="deleteOldFile" method="GET" action="deleteOldFile.php">
-        <div class="span2">
-            <label><br></label>
-            <button class="btn btn-danger" type="submit">Delete Old Files</button>
-            <label><br></label>
-        </div>
-    </form>
-    </p>
+</div>
+
+<div id="testResultLink">
+
+
+</div>
+
+<div class="container">
+
+    <?php
+
+    runRegression();
+
+    ?>
+
+    <div class="btn-group">
+        <p>
+
+        <form id="featureFilter" name="featureFilter" method="GET" action="pherret.php">
+            <div class="controls controls-row">
+                <button class="btn btn-primary" type="submit">Return to List</button>
+            </div>
+        </form>
+
+        <form id="deleteOldFile" name="deleteOldFile" method="GET" action="deleteOldFile.php">
+            <div class="controls controls-row">
+                <button class="btn btn-danger" type="submit">Delete Old Files</button>
+            </div>
+        </form>
+        </p>
     </div>
 </div>
 
-
 <?php
+
+
+function noUsername()
+{
+    echo "
+        <div class='container'>
+            <h4>Please Return to List and enter your Username.</h4>
+        </div>
+    ";
+}
 
 function commitExecution()
 {
-    global $behatLoc;
     $execution = writeExecutionString();
-    $output = shell_exec("cd " . $behatLoc . " && " . $execution);
+    $output = shell_exec($execution);
     writeResultsToFile($output);
 }
 
 function writeResultsToFile($output)
 {
 
-    global $username;
-
-    $resultsFile = $username . date("YmdH") . ".html";
+    $resultsFile = $_GET["username"] . date("YmdH") . ".html";
 
     $fo = fopen($resultsFile, 'w+');
 
@@ -161,17 +144,19 @@ function writeResultsToFile($output)
 function resultsLink($resultsFile)
 {
     echo "
-    <h4>
-    <a href='" . $resultsFile . "' target='_blank' style='text-decoration:underline'>Click To See Test Results</a>
-    </h4>
+
+            <h4>
+                <a href='" . $resultsFile . "' target='_blank' style='text-decoration:underline'>Click To See Test Results</a>
+            </h4>
+
     ";
 
 }
 
 function writeExecutionString()
 {
-    global $environment, $browser, $featureLoc;
-    $executionString = "bin/behat --profile " . $environment . "_" . $browser . " " . $featureLoc;
+    global $behatLoc, $featureLoc;
+    $executionString = "cd " . $behatLoc . " && bin/behat --profile " . strtolower($_GET['environment']) . "_" . strtolower($_GET['browser']) . " " . $featureLoc;
 
     return $executionString;
 }
@@ -186,30 +171,55 @@ function checkmarkValues()
 
 function appendFilterToFeature($features)
 {
-    global $localRepo, $username, $behatLoc;
+    global $localRepo, $behatLoc;
 
     foreach ($features as $feature) {
         $path_to_file = $localRepo . "/" . $feature;
-        file_put_contents($path_to_file, str_replace("Scenario", "@" . $username . "\nScenario", file_get_contents($path_to_file)));
+        file_put_contents($path_to_file, str_replace("Scenario", "@" . $_GET["username"] . "\nScenario", file_get_contents($path_to_file)));
     }
 
-    $temp_behat_loc = $behatLoc."behat.yml";
-    file_put_contents($temp_behat_loc, str_replace("~@mixed", "@".$username, file_get_contents($temp_behat_loc)));
+    $temp_behat_loc = $behatLoc . "behat.yml";
+    file_put_contents($temp_behat_loc, str_replace("~@mixed", "@" . $_GET["username"], file_get_contents($temp_behat_loc)));
 
 }
 
 function removeFilterFromFeature($features)
 {
-    global $localRepo, $behatLoc, $username;
+    global $localRepo, $behatLoc;
 
     foreach ($features as $feature) {
         $path_to_file = $localRepo . "/" . $feature;
-        file_put_contents($path_to_file, str_replace("@" . $username."\n", "", file_get_contents($path_to_file)));
+        file_put_contents($path_to_file, str_replace("@" . $_GET["username"] . "\n", "", file_get_contents($path_to_file)));
     }
 
-    $temp_behat_loc = $behatLoc."behat.yml";
-    file_put_contents($temp_behat_loc, str_replace("@".$username, "~@mixed", file_get_contents($temp_behat_loc)));
+    $temp_behat_loc = $behatLoc . "behat.yml";
+    file_put_contents($temp_behat_loc, str_replace("@" . $_GET["username"], "~@mixed", file_get_contents($temp_behat_loc)));
 
+}
+
+function runRegression()
+{
+    //Get username
+    $username = $_GET["username"];
+    if ($username == "") {
+        noUsername();
+    } else {
+
+        $_SESSION['username'] = $username;
+
+//Get the selected features
+        $features = checkmarkValues();
+
+//Append username to the selected features
+        appendFilterToFeature($features);
+
+//Commit the execution string
+        commitExecution();
+
+//Remove username from the selected features
+        removeFilterFromFeature($features);
+
+    };
 }
 
 ?>
