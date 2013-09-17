@@ -24,13 +24,13 @@ $username = $_GET["username"];
 //Get the environment
 if(isset($_GET['environment']))
 {
-$environment = strtolower($_GET['environment']);
+    $environment = strtolower($_GET['environment']);
 }
 
 //Get the browser
 if(isset($_GET['browser']))
 {
-$browser = strtolower($_GET['browser']);
+    $browser = strtolower($_GET['browser']);
 }
 
 ?>
@@ -82,7 +82,7 @@ $browser = strtolower($_GET['browser']);
                     <!--                    <li class="active"><a href="#">Home</a></li>-->
                     <!--                    <li><a href="#about">About</a></li>-->
                     <!--                    <li><a href="#contact">Contact</a></li>-->
-<!--                    <li><a href="/logout.php">Sign Out</a></li>-->
+                    <!--                    <li><a href="/logout.php">Sign Out</a></li>-->
                 </ul>
             </div>
             <!--/.nav-collapse -->
@@ -96,16 +96,15 @@ $browser = strtolower($_GET['browser']);
 
     <form id="resetFilter" name="resetFilter" method="GET" action="pherret.php">
         <div class="controls controls-row">
-                <button class="btn btn-primary" type="submit">Reset Features</button>
+            <button class="btn btn-primary" type="submit">Reset Features</button>
         </div>
     </form>
 
-<!--    <form id="updateRepo" name="updateRepo" method="GET" action="updateRepo.php">-->
-<!--        <div class="controls controls-row">-->
-<!--            <button class="btn btn-primary" type="submit">Update Repository - doesn't work</button>-->
-<!--        </div>-->
-<!--    </form>-->
-
+    <!--    <form id="updateRepo" name="updateRepo" method="GET" action="updateRepo.php">-->
+    <!--        <div class="controls controls-row">-->
+    <!--            <button class="btn btn-primary" type="submit">Update Repository - doesn't work</button>-->
+    <!--        </div>-->
+    <!--    </form>-->
 
     <form id="featureFilter" name="featureFilter" method="GET" action="pherretResults.php">
 
@@ -135,26 +134,26 @@ $browser = strtolower($_GET['browser']);
                 <option <?php if ($_GET['browser'] == 'Firefox') { ?>selected="true" <?php }; ?>value="Firefox">
                     Firefox
                 </option>
-                <option <?php if ($_GET['browser'] == 'Chrome') { ?>selected="true" <?php }; ?>value="Chrome">
-                    Chrome
-                </option>
+                <!--                <option --><?php //if ($_GET['browser'] == 'Chrome') { ?><!--selected="true" --><?php //}; ?><!--value="Chrome">-->
+                <!--                    Chrome-->
+                <!--                </option>-->
             </select>
 
             <input class="span2" type="text" id="username" name="username" placeholder="Username">
 
         </div>
 
-<!--            <div class="span2">-->
-<!--                <label>Branch</label>-->
-<!--                <!--Changing the branch changes where the link points on GitHub.-->
-<!--                This does not change which files are shown in the table-->
-<!--                <input type="text" value="--><?PHP //print $branch; ?><!--" name="gitBranch">-->
-<!--            </div>-->
+        <!--            <div class="span2">-->
+        <!--                <label>Branch</label>-->
+        <!--                <!--Changing the branch changes where the link points on GitHub.-->
+        <!--                This does not change which files are shown in the table-->
+        <!--                <input type="text" value="--><?PHP //print $branch; ?><!--" name="gitBranch">-->
+        <!--            </div>-->
 
 
-            <label><br></label>
-            <button class="btn btn-primary" type="submit">Start Features</button>
-            <label><br></label>
+        <label><br></label>
+        <button class="btn btn-primary" type="submit">Start Features</button>
+        <label><br></label>
 
         <?php listFolderFiles($localRepo, array('index.php', 'edit_page.php', 'pages', 'full', 'sanity')); checkmarkValues()?>
 

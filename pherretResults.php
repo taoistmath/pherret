@@ -7,11 +7,12 @@
  * To change this template use File | Settings | File Templates.
  */
 
+//session_start();
+
 //Timestamp for creating HTML file for test results
 $behatLoc = 'tools/regression/'; //Set to relative path to location of behat.yml file
 $featureLoc = 'features/dandb'; //Set to local repo folder that contains features
 $localRepo = $behatLoc . $featureLoc; //Set to local repo folder that contains features
-$resultsFile = date("YmdHms") . ".html";
 
 //Get username
 $username = $_GET["username"];
@@ -20,59 +21,65 @@ if($username == "")
     echo "Please Return to List and enter your Username.";
 } else {
 
+    $_SESSION['username'] = $username;
+
 //Get the environment
-if(isset($_GET['environment']))
-{
-    $environment = strtolower($_GET['environment']);
-}
+    if(isset($_GET['environment']))
+    {
+        $environment = strtolower($_GET['environment']);
+    }
 
 //Get the browser
-if(isset($_GET['browser']))
-{
-    $browser = strtolower($_GET['browser']);
-}
+    if(isset($_GET['browser']))
+    {
+        $browser = strtolower($_GET['browser']);
+    }
 
 //Get the selected features
-$features = checkmarkValues();
+    $features = checkmarkValues();
 
 //Append username to the selected features
-$temp_file_array = appendFilterToFeature($features);
+    $temp_file_array = appendFilterToFeature($features);
 
-//Get the execution string
-$execution = writeExecutionString();
-
-$output = shell_exec("cd " . $behatLoc . " && " . $execution);
+//Commit the execution string
+    commitExecution();
 
 //Remove username from the selected features
-removeFilterFromFeature($features);
+    removeFilterFromFeature($features);
 
-echo '<div class="results">';
-//Print the output to a file
-
-writeResultsToFile();
-
-resultsLink();
-echo '</div>';
 }
 
-function resultsLink()
+function commitExecution()
 {
-    global $resultsFile;
+    global $behatLoc;
+    $execution = writeExecutionString();
+    $output = shell_exec("cd " . $behatLoc . " && " . $execution);
+    writeResultsToFile($output);
+}
+
+function writeResultsToFile($output)
+{
+
+    global $username;
+
+    $resultsFile = $username . date("YmdH") . ".html";
+
+    $fo = fopen($resultsFile, 'w+');
+
+    fwrite($fo, "<!DOCTYPE html><pre>$output</pre>");
+    fclose($fo);
+
+    resultsLink($resultsFile);
+
+}
+
+function resultsLink($resultsFile)
+{
     echo "
     <h4>
     <a href='" . $resultsFile . "' target='_blank' style='text-decoration:underline'>Click To See Test Results</a>
     </h4>
     ";
-
-}
-
-function writeResultsToFile()
-{
-    global $resultsFile, $output;
-    $fo = fopen($resultsFile, 'x');
-
-    fwrite($fo, "<!DOCTYPE html><pre>$output</pre>");
-    fclose($fo);
 
 }
 
@@ -132,4 +139,10 @@ function removeFilterFromFeature($features)
 
 </form>
 
-
+<form id="deleteOldFile" name="deleteOldFile" method="GET" action="deleteOldFile.php">
+    <div class="span2">
+        <label><br></label>
+        <button class="btn btn-primary" type="submit">Delete Old Files</button>
+        <label><br></label>
+    </div>
+</form>

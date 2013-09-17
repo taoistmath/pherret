@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9db16eaa-2022-476b-8721-dace1ae95a24" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/deleteOldFile.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pherret.php" afterPath="$PROJECT_DIR$/pherret.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pherretResults.php" afterPath="$PROJECT_DIR$/pherretResults.php" />
     </list>
     <ignored path="pherret.iws" />
@@ -22,45 +24,46 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.39168665">
-      <split-first>
-        <leaf>
-          <file leaf-file-name="pherret.php" pinned="false" current="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/pherret.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="159" column="0" selection-start="6046" selection-end="6046" vertical-scroll-proportion="0.5887681">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="behat.yml" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/tools/regression/behat.yml">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="29" column="12" selection-start="1034" selection-end="1034" vertical-scroll-proportion="0.0">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file leaf-file-name="pherretResults.php" pinned="false" current="true" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/pherretResults.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="106" column="0" selection-start="2561" selection-end="2561" vertical-scroll-proportion="0.33333334">
-                  <folding>
-                    <element signature="e#6#165#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf>
+      <file leaf-file-name="pherret.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pherret.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="214" column="59" selection-start="8290" selection-end="8290" vertical-scroll-proportion="-17.291666">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="behat.yml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tools/regression/behat.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="29" column="12" selection-start="1034" selection-end="1034" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pherretResults.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pherretResults.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="21" column="8" selection-start="542" selection-end="631" vertical-scroll-proportion="-13.125">
+              <folding>
+                <element signature="e#6#165#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="deleteOldFile.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/deleteOldFile.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="25" column="0" selection-start="412" selection-end="412" vertical-scroll-proportion="0.42759407">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -76,15 +79,16 @@
         <option value="$PROJECT_DIR$/tools/regression/features/dandb/cms_features/cms_about_us.feature" />
         <option value="$PROJECT_DIR$/pherret.php" />
         <option value="$PROJECT_DIR$/pherretResults.php" />
+        <option value="$PROJECT_DIR$/deleteOldFile.php" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="65" />
+    <option name="x" value="1366" />
     <option name="y" value="24" />
-    <option name="width" value="1301" />
-    <option name="height" value="744" />
+    <option name="width" value="1920" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -112,6 +116,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -170,35 +175,8 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pherret" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pherret" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tools" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="regression" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="features" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dandb" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -246,14 +224,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="24" width="1301" height="744" extended-state="6" />
+    <frame x="1366" y="24" width="1920" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.7178257" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23315509" sideWeight="0.9698925" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
@@ -321,9 +299,9 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/tools/regression/features/dandb/cms_features/cms_about_us.feature">
+    <entry file="file://$PROJECT_DIR$/pherret.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="0" selection-start="2146" selection-end="2146" vertical-scroll-proportion="0.0">
+        <state line="159" column="0" selection-start="6046" selection-end="6046" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -335,19 +313,47 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pherretResults.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="106" column="0" selection-start="2561" selection-end="2561" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#6#165#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools/regression/features/dandb/cms_features/cms_about_us.feature">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="0" selection-start="2146" selection-end="2146" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools/regression/behat.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="12" selection-start="1034" selection-end="1034" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/pherret.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="159" column="0" selection-start="6046" selection-end="6046" vertical-scroll-proportion="0.5887681">
+        <state line="214" column="59" selection-start="8290" selection-end="8290" vertical-scroll-proportion="-17.291666">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pherretResults.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="106" column="0" selection-start="2561" selection-end="2561" vertical-scroll-proportion="0.33333334">
+        <state line="21" column="8" selection-start="542" selection-end="631" vertical-scroll-proportion="-13.125">
           <folding>
             <element signature="e#6#165#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/deleteOldFile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="0" selection-start="412" selection-end="412" vertical-scroll-proportion="0.42759407">
+          <folding />
         </state>
       </provider>
     </entry>
