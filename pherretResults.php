@@ -13,7 +13,8 @@ session_start();
 $behatLoc = 'tools/regression/'; //Set to relative path to location of behat.yml file
 $featureLoc = 'features/dandb'; //Set to local repo folder that contains features
 $localRepo = $behatLoc . $featureLoc; //Set to local repo folder that contains features
-
+date_default_timezone_set('America/Los_Angeles');
+        
 ?>
 
 <html lang="en" xmlns="http://www.w3.org/1999/html">
