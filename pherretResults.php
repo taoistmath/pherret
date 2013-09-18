@@ -14,7 +14,7 @@ $behatLoc = 'tools/regression/'; //Set to relative path to location of behat.yml
 $featureLoc = 'features/dandb'; //Set to local repo folder that contains features
 $localRepo = $behatLoc . $featureLoc; //Set to local repo folder that contains features
 date_default_timezone_set('America/Los_Angeles');
-        
+
 ?>
 
 <html lang="en" xmlns="http://www.w3.org/1999/html">
@@ -132,6 +132,7 @@ function writeResultsToFile($output)
 {
 
     $resultsFile = $_GET["username"] . date("YmdH") . ".html";
+    $_SESSION['resultsFile'] = $resultsFile;
 
     $fo = fopen($resultsFile, 'w+');
 
@@ -206,7 +207,7 @@ function runRegression()
         noUsername();
     } else {
 
-        $_SESSION['username'] = $username;
+//        $_SESSION['username'] = $username;
 
 //Get the selected features
         $features = checkmarkValues();
