@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php
-//session_start();
+session_destroy();
 //
 //if ($_SESSION['username'] == NULL)
 //    header("Location: http://pherret.local/login.php");

@@ -78,11 +78,6 @@ date_default_timezone_set('America/Los_Angeles');
 
 </div>
 
-<div id="testResultLink">
-
-
-</div>
-
 <div class="container">
 
     <?php
@@ -100,13 +95,21 @@ date_default_timezone_set('America/Los_Angeles');
             </div>
         </form>
 
-        <form id="deleteOldFile" name="deleteOldFile" method="GET" action="deleteOldFile.php">
+        <form id="saveFile" name="saveFile" method="GET" action="saveFile.php">
             <div class="controls controls-row">
-                <button class="btn btn-danger" type="submit">Delete Old Files</button>
+                <button class="btn btn-success" type="submit">Save Results File</button>
             </div>
         </form>
+
+        <form id="deleteOldFile" name="deleteOldFile" method="GET" action="deleteOldFile.php">
+            <div class="controls controls-row">
+                <button class="btn btn-danger" type="submit">Delete Results Files</button>
+            </div>
+        </form>
+
         </p>
     </div>
+
 </div>
 
 <?php
