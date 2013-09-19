@@ -22,14 +22,12 @@ $localRepo = $behatLoc . $featureLoc; //Set to local repo folder that contains f
 $username = $_GET["username"];
 
 //Get the environment
-if(isset($_GET['environment']))
-{
+if (isset($_GET['environment'])) {
     $environment = strtolower($_GET['environment']);
 }
 
 //Get the browser
-if(isset($_GET['browser']))
-{
+if (isset($_GET['browser'])) {
     $browser = strtolower($_GET['browser']);
 }
 
@@ -94,17 +92,26 @@ if(isset($_GET['browser']))
 
     <h1>PHERRET</h1>
 
-    <form id="resetFilter" name="resetFilter" method="GET" action="pherret.php">
-        <div class="controls controls-row">
-            <button class="btn btn-primary" type="submit">Reset Features</button>
-        </div>
-    </form>
-
-    <form id="savedFiles" name="savedFiles" method="GET" action="viewSavedFiles.php">
-        <div class="controls controls-row">
-            <button class="btn btn-primary" type="submit">View Saved Files</button>
-        </div>
-    </form>
+    <table>
+        <tbody>
+        <tr>
+            <td class="span2">
+                <form id="resetFilter" name="resetFilter" method="GET" action="pherret.php">
+                    <div class="controls controls-row">
+                        <button class="btn btn-primary" type="submit">Reset Features</button>
+                    </div>
+                </form>
+            </td>
+            <td class="span2">
+                <form id="savedFiles" name="savedFiles" method="GET" action="viewSavedFiles.php">
+                    <div class="controls controls-row">
+                        <button class="btn btn-primary" type="submit">View Saved Files</button>
+                    </div>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 
     <!--    <form id="updateRepo" name="updateRepo" method="GET" action="updateRepo.php">-->
     <!--        <div class="controls controls-row">-->
@@ -140,12 +147,14 @@ if(isset($_GET['browser']))
                 <option <?php if ($_GET['browser'] == 'Firefox') { ?>selected="true" <?php }; ?>value="Firefox">
                     Firefox
                 </option>
-                <!--                <option --><?php //if ($_GET['browser'] == 'Chrome') { ?><!--selected="true" --><?php //}; ?><!--value="Chrome">-->
+                <!--                <option --><?php //if ($_GET['browser'] == 'Chrome') { ?><!--selected="true" -->
+                <?php //}; ?><!--value="Chrome">-->
                 <!--                    Chrome-->
                 <!--                </option>-->
             </select>
 
-            <input class="span2" type="text" id="username" name="username" placeholder="Username" value="<?php print $_GET["username"]; ?>">
+            <input class="span2" type="text" id="username" name="username" placeholder="Username"
+                   value="<?php print $_GET["username"]; ?>">
 
         </div>
 
@@ -191,7 +200,7 @@ function listFolderFiles($dir, $exclude)
                     <br />';
                 } else {
                     echo '<input type="checkbox" name="feature[]" id="feature" value="' . $folder . '/' . $file . '" >
-                        <a href="' . ltrim($localRepo . '/' .$folder . '/' . $file, './') . '"target="_blank">' . $file . '</a><br />';
+                        <a href="' . ltrim($localRepo . '/' . $folder . '/' . $file, './') . '"target="_blank">' . $file . '</a><br />';
                 }
                 if (is_dir($dir . '/' . $file)) listFolderFiles($dir . '/' . $file, $exclude);
             }

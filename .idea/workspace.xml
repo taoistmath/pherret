@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9db16eaa-2022-476b-8721-dace1ae95a24" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/viewSavedFiles.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pherret.php" afterPath="$PROJECT_DIR$/pherret.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pherretResults.php" afterPath="$PROJECT_DIR$/pherretResults.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viewSavedFiles.php" afterPath="$PROJECT_DIR$/viewSavedFiles.php" />
     </list>
     <ignored path="pherret.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -24,13 +24,13 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.4122996">
+    <splitter split-orientation="horizontal" split-proportion="0.45614973">
       <split-first>
         <leaf>
           <file leaf-file-name="pherret.php" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/pherret.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="5" column="0" selection-start="79" selection-end="79" vertical-scroll-proportion="0.08680555">
+                <state line="86" column="14" selection-start="3355" selection-end="3355" vertical-scroll-proportion="0.06944445">
                   <folding />
                 </state>
               </provider>
@@ -63,6 +63,19 @@
               </provider>
             </entry>
           </file>
+          <file leaf-file-name="viewSavedFiles.php" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/viewSavedFiles.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="78" column="4" selection-start="2679" selection-end="2720" vertical-scroll-proportion="-10.625">
+                  <folding>
+                    <element signature="e#22#183#0" expanded="true" />
+                    <marker date="1379628523832" expanded="true" signature="4024:4103" placeholder="..." />
+                    <marker date="1379628523832" expanded="true" signature="4503:4582" placeholder="..." />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
         </leaf>
       </split-first>
       <split-second>
@@ -70,7 +83,7 @@
           <file leaf-file-name="saveFile.php" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/saveFile.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="109" column="0" selection-start="3424" selection-end="3424" vertical-scroll-proportion="0.0">
+                <state line="109" column="0" selection-start="3424" selection-end="3424" vertical-scroll-proportion="-0.625">
                   <folding>
                     <marker date="1379612117536" expanded="true" signature="4024:4096" placeholder="..." />
                   </folding>
@@ -78,23 +91,23 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="pherretResults.php" pinned="false" current="false" current-in-tab="false">
+          <file leaf-file-name="pherretResults.php" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/pherretResults.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="219" column="21" selection-start="6480" selection-end="6480" vertical-scroll-proportion="0.0">
-                  <folding />
+                <state line="112" column="0" selection-start="3752" selection-end="3752" vertical-scroll-proportion="0.7916667">
+                  <folding>
+                    <marker date="1379631164528" expanded="true" signature="4136:4219" placeholder="..." />
+                  </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="viewSavedFiles.php" pinned="false" current="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/viewSavedFiles.php">
+          <file leaf-file-name="cms_about_us.feature" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/tools/regression/features/dandb/cms_features/cms_about_us.feature">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="108" column="10" selection-start="3464" selection-end="3464" vertical-scroll-proportion="0.22462942">
+                <state line="17" column="47" selection-start="677" selection-end="677" vertical-scroll-proportion="0.0">
                   <folding>
-                    <element signature="e#22#183#0" expanded="true" />
-                    <marker date="1379626038824" expanded="true" signature="3671:3750" placeholder="..." />
-                    <marker date="1379626038824" expanded="true" signature="4150:4229" placeholder="..." />
+                    <marker date="1379631380228" expanded="true" signature="162:303" placeholder="Scenario: User can follow breadcrumb from CMS page to home page" />
                   </folding>
                 </state>
               </provider>
@@ -115,15 +128,15 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/tools/regression/features/dandb/cms_features/cms_about_us.feature" />
         <option value="$PROJECT_DIR$/tools/regression/features/dandb/misc/a_side_load.feature" />
         <option value="$PROJECT_DIR$/tools/regression/behat.yml" />
         <option value="$PROJECT_DIR$/deleteOldFile.php" />
         <option value="$PROJECT_DIR$/gfog2013091910.html" />
         <option value="$PROJECT_DIR$/saveFile.php" />
-        <option value="$PROJECT_DIR$/pherretResults.php" />
-        <option value="$PROJECT_DIR$/viewSavedFiles.php" />
         <option value="$PROJECT_DIR$/pherret.php" />
+        <option value="$PROJECT_DIR$/viewSavedFiles.php" />
+        <option value="$PROJECT_DIR$/tools/regression/features/dandb/cms_features/cms_about_us.feature" />
+        <option value="$PROJECT_DIR$/pherretResults.php" />
       </list>
     </option>
   </component>
@@ -148,7 +161,7 @@
     <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
-    <navigator proportions="" version="1" splitterProportion="0.5">
+    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -159,7 +172,125 @@
       <autoscrollFromSource />
       <sortByType />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pherret" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pherret" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pherret" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pherret" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pherret" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tools" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="regression" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pherret" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pherret" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tools" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="regression" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="features" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pherret" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pherret" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tools" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="regression" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="features" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dandb" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pherret" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pherret" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tools" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="regression" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="features" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dandb" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cms_features" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -293,8 +424,8 @@
         <state line="108" column="10" selection-start="3464" selection-end="3464" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="e#22#183#0" expanded="true" />
-            <marker date="1379626038824" expanded="true" signature="3671:3750" placeholder="..." />
-            <marker date="1379626038824" expanded="true" signature="4150:4229" placeholder="..." />
+            <marker date="1379628523832" expanded="true" signature="4024:4103" placeholder="..." />
+            <marker date="1379628523832" expanded="true" signature="4503:4582" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -309,7 +440,9 @@
     <entry file="file://$PROJECT_DIR$/pherretResults.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="146" column="1" selection-start="4435" selection-end="4435" vertical-scroll-proportion="0.0">
-          <folding />
+          <folding>
+            <marker date="1379631164528" expanded="true" signature="4136:4219" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -339,13 +472,10 @@
     <entry file="file://$PROJECT_DIR$/pherretResults.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="106" column="0" selection-start="2561" selection-end="2561" vertical-scroll-proportion="0.0">
-          <folding />
+          <folding>
+            <marker date="1379631164528" expanded="true" signature="4136:4219" placeholder="..." />
+          </folding>
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tools/regression/features/dandb/cms_features/cms_about_us.feature">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="0" selection-start="2146" selection-end="2146" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tools/regression/features/dandb/misc/a_side_load.feature">
@@ -376,34 +506,45 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/saveFile.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="109" column="0" selection-start="3424" selection-end="3424" vertical-scroll-proportion="0.0">
+        <state line="109" column="0" selection-start="3424" selection-end="3424" vertical-scroll-proportion="-0.625">
           <folding>
             <marker date="1379612117536" expanded="true" signature="4024:4096" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pherretResults.php">
+    <entry file="file://$PROJECT_DIR$/viewSavedFiles.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="219" column="21" selection-start="6480" selection-end="6480" vertical-scroll-proportion="0.0">
-          <folding />
+        <state line="78" column="4" selection-start="2679" selection-end="2720" vertical-scroll-proportion="-10.625">
+          <folding>
+            <element signature="e#22#183#0" expanded="true" />
+            <marker date="1379628523832" expanded="true" signature="4024:4103" placeholder="..." />
+            <marker date="1379628523832" expanded="true" signature="4503:4582" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/viewSavedFiles.php">
+    <entry file="file://$PROJECT_DIR$/tools/regression/features/dandb/cms_features/cms_about_us.feature">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="108" column="10" selection-start="3464" selection-end="3464" vertical-scroll-proportion="0.22462942">
+        <state line="17" column="47" selection-start="677" selection-end="677" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="e#22#183#0" expanded="true" />
-            <marker date="1379626038824" expanded="true" signature="3671:3750" placeholder="..." />
-            <marker date="1379626038824" expanded="true" signature="4150:4229" placeholder="..." />
+            <marker date="1379631380228" expanded="true" signature="162:303" placeholder="Scenario: User can follow breadcrumb from CMS page to home page" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pherretResults.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="112" column="0" selection-start="3752" selection-end="3752" vertical-scroll-proportion="0.7916667">
+          <folding>
+            <marker date="1379631164528" expanded="true" signature="4136:4219" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pherret.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="79" selection-end="79" vertical-scroll-proportion="0.08680555">
+        <state line="86" column="14" selection-start="3355" selection-end="3355" vertical-scroll-proportion="0.06944445">
           <folding />
         </state>
       </provider>

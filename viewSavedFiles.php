@@ -12,7 +12,8 @@ session_start();
 
 ?>
 
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html"
+      xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="utf-8">
     <title>PHERRET</title>
@@ -71,22 +72,32 @@ session_start();
 
     <h1>PHERRET</h1>
 
-</div>
 
-<div class="container">
-
-    <form id="featureFilter" name="featureFilter" method="GET" action="viewSavedFiles.php">
-
-        <div class="controls controls-row">
-            <input class="span2" type="text" id="username" name="username" placeholder="Username"
-                   value="<?php print $_GET["username"]; ?>">
-        </div>
-
-        <label><br></label>
-        <button class="btn btn-success" type="submit">View Saved Files</button>
-
-    </form>
-
+    <table>
+        <tbody>
+        <tr>
+            <form id="featureFilter" name="featureFilter" method="GET" action="viewSavedFiles.php">
+                <div class="controls controls-row">
+                    <input class="span2" type="text" id="username" name="username" placeholder="Username"
+                           value="<?php print $_GET["username"]; ?>">
+                </div>
+        </tr>
+        <tr>
+            <td class="span2">
+                <button class="btn btn-success" type="submit">View Saved Files</button>
+                </form>
+            </td>
+            <td class="span2">
+                <form id="returnToList" name="returnToList" method="GET" action="pherret.php">
+                    <div class="controls controls-row">
+                        <br>
+                        <button class="btn btn-primary" type="submit">Return to List</button>
+                    </div>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 
     <?php
 
@@ -99,11 +110,6 @@ session_start();
 
             <label><br></label>
 
-        <form id="returnToList" name="returnToList" method="GET" action="pherret.php">
-            <div class="controls controls-row">
-                <button class="btn btn-primary" type="submit">Return to List</button>
-            </div>
-        </form>
 
         </p>
     </div>
