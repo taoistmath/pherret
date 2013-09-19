@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <?php
+session_start();
 session_destroy();
 //
 //if ($_SESSION['username'] == NULL)
