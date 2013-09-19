@@ -100,6 +100,12 @@ if(isset($_GET['browser']))
         </div>
     </form>
 
+    <form id="savedFiles" name="savedFiles" method="GET" action="viewSavedFiles.php">
+        <div class="controls controls-row">
+            <button class="btn btn-primary" type="submit">View Saved Files</button>
+        </div>
+    </form>
+
     <!--    <form id="updateRepo" name="updateRepo" method="GET" action="updateRepo.php">-->
     <!--        <div class="controls controls-row">-->
     <!--            <button class="btn btn-primary" type="submit">Update Repository - doesn't work</button>-->
