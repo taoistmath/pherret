@@ -206,25 +206,19 @@ function runRegression()
 {
     //Get username
     $username = $_GET["username"];
-    if ($username == "") {
-        noUsername();
+    if (!$username == "") {
+
+        $features = checkmarkValues(); //Get the selected features
+
+        appendFilterToFeature($features); //Append username to the selected features
+
+        commitExecution(); //Commit the execution string
+
+        removeFilterFromFeature($features); //Remove username from the selected features
+
     } else {
-
-//        $_SESSION['username'] = $username;
-
-//Get the selected features
-        $features = checkmarkValues();
-
-//Append username to the selected features
-        appendFilterToFeature($features);
-
-//Commit the execution string
-        commitExecution();
-
-//Remove username from the selected features
-        removeFilterFromFeature($features);
-
-    };
+        noUsername();
+    }
 }
 
 ?>

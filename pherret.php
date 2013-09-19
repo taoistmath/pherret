@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <?php
 session_start();
-session_destroy();
 //
 //if ($_SESSION['username'] == NULL)
 //    header("Location: http://pherret.local/login.php");
@@ -146,7 +145,7 @@ if(isset($_GET['browser']))
                 <!--                </option>-->
             </select>
 
-            <input class="span2" type="text" id="username" name="username" placeholder="Username">
+            <input class="span2" type="text" id="username" name="username" placeholder="Username" value="<?php print $_GET["username"]; ?>">
 
         </div>
 
@@ -159,14 +158,14 @@ if(isset($_GET['browser']))
 
 
         <label><br></label>
-        <button class="btn btn-primary" type="submit">Start Features</button>
+        <button class="btn btn-success" type="submit">Start Features</button>
         <label><br></label>
 
         <?php listFolderFiles($localRepo, array('index.php', 'edit_page.php', 'pages', 'full', 'sanity')); //checkmarkValues()?>
 
         <div class="span2">
             <label><br></label>
-            <button class="btn btn-primary" type="submit">Start Features</button>
+            <button class="btn btn-success" type="submit">Start Features</button>
             <label><br></label>
         </div>
     </form>
