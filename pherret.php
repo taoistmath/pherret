@@ -42,25 +42,26 @@ if (isset($_GET['browser'])) {
     <meta name="author" content="">
 
     <!-- Le styles -->
-    <link href="../assets/css/bootstrap.css" rel="stylesheet">
+    <link href="./assets/css/bootstrap.css" rel="stylesheet">
     <style>
         body {
             padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
         }
     </style>
-    <link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="./assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="./CheckTree/demo/styles.css" rel="stylesheet">
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
-    <script src="../assets/js/html5shiv.js"></script>
+    <script src="./assets/js/html5shiv.js"></script>
     <![endif]-->
 
     <!-- Fav and touch icons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
-    <link rel="shortcut icon" href="../assets/ico/favicon.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="./assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="./assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="./assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="./assets/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="./assets/ico/favicon.png">
 </head>
 
 <body>
@@ -170,7 +171,9 @@ if (isset($_GET['browser'])) {
         <button class="btn btn-success" type="submit">Start Features</button>
         <label><br></label>
 
-        <?php listFolderFiles($localRepo, array('index.php', 'edit_page.php', 'pages', 'full', 'sanity')); //checkmarkValues()?>
+        <ul class="tree" style="margin-left: 15px;">
+            <?php listFolderFiles($localRepo, array('index.php', 'edit_page.php', 'pages', 'full', 'sanity')); //checkmarkValues()?>
+        </ul>
 
         <div class="span2">
             <label><br></label>
@@ -180,25 +183,6 @@ if (isset($_GET['browser'])) {
     </form>
 
 </div>
-
-
-
-
-<script language="JavaScript">
-    function toggle(source) {
-        checkboxes = document.getElementsByName('foo');
-        for(var i=0, n=checkboxes.length;i<n;i++) {
-            checkboxes[i].checked = source.checked;
-        }
-    }
-</script>
-
-<input type="checkbox" onClick="toggle(this)" /> Toggle All<br/>
-
-<input type="checkbox" name="foo" value="bar1"> Bar 1<br/>
-<input type="checkbox" name="foo" value="bar2"> Bar 2<br/>
-<input type="checkbox" name="foo" value="bar3"> Bar 3<br/>
-<input type="checkbox" name="foo" value="bar4"> Bar 4<br/>
 
 <?php
 
@@ -211,17 +195,25 @@ function listFolderFiles($dir, $exclude)
         if (is_array($exclude) and !in_array($file, $exclude)) {
             if ($file != '.' && $file != '..') {
                 if (is_dir($dir . '/' . $file)) {
-                    echo '<br />
-                    <div name="project" id="project">
-                    <input type="checkbox" name="folder[]" id="folder" value="' . $folder . '" >
-                    <strong>' . $file . '</strong>
-                    </div>
-                    <br />';
+                    echo '
+                    <li>
+                        <input type="checkbox">
+                        <label>' . $file . '</label>
+                        <ul>
+                    ';
                 } else {
-                    echo '<input type="checkbox" name="feature[]" id="feature" value="' . $folder . '/' . $file . '" >
-                        <a href="' . ltrim($localRepo . '/' . $folder . '/' . $file, './') . '"target="_blank">' . $file . '</a><br />';
+                    echo '
+                    <li>
+                        <input type="checkbox" name="feature[]" id="feature" value="' . $folder . '/' . $file . '">
+                        <a href="' . ltrim($localRepo . '/' . $folder . '/' . $file, './') . '"target="_blank">' . $file . '</a><br />
+                    </li>
+                    ';
                 }
-                if (is_dir($dir . '/' . $file)) listFolderFiles($dir . '/' . $file, $exclude);
+                if (is_dir($dir . '/' . $file))
+                {
+                    listFolderFiles($dir . '/' . $file, $exclude);
+                    echo '</ul>';
+                }
             }
         }
     }
@@ -234,19 +226,28 @@ function listFolderFiles($dir, $exclude)
 <!-- Le javascript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="../assets/js/jquery.js"></script>
-<script src="../assets/js/bootstrap-transition.js"></script>
-<script src="../assets/js/bootstrap-alert.js"></script>
-<script src="../assets/js/bootstrap-modal.js"></script>
-<script src="../assets/js/bootstrap-dropdown.js"></script>
-<script src="../assets/js/bootstrap-scrollspy.js"></script>
-<script src="../assets/js/bootstrap-tab.js"></script>
-<script src="../assets/js/bootstrap-tooltip.js"></script>
-<script src="../assets/js/bootstrap-popover.js"></script>
-<script src="../assets/js/bootstrap-button.js"></script>
-<script src="../assets/js/bootstrap-collapse.js"></script>
-<script src="../assets/js/bootstrap-carousel.js"></script>
-<script src="../assets/js/bootstrap-typeahead.js"></script>
+<script src="./assets/js/jquery.js"></script>
+<script src="./assets/js/bootstrap-transition.js"></script>
+<script src="./assets/js/bootstrap-alert.js"></script>
+<script src="./assets/js/bootstrap-modal.js"></script>
+<script src="./assets/js/bootstrap-dropdown.js"></script>
+<script src="./assets/js/bootstrap-scrollspy.js"></script>
+<script src="./assets/js/bootstrap-tab.js"></script>
+<script src="./assets/js/bootstrap-tooltip.js"></script>
+<script src="./assets/js/bootstrap-popover.js"></script>
+<script src="./assets/js/bootstrap-button.js"></script>
+<script src="./assets/js/bootstrap-collapse.js"></script>
+<script src="./assets/js/bootstrap-carousel.js"></script>
+<script src="./assets/js/bootstrap-typeahead.js"></script>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+<script src="./CheckTree/jquery.checktree.js"></script>
+
+<script>
+    $(function () {
+        $('ul.tree').checkTree();
+    });
+</script>
 
 </body>
 </html>
