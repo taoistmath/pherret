@@ -28,6 +28,7 @@ ul.tree li ul {
 ul.tree label {
     cursor: pointer;
     font-weight: bold;
+    display: inline-block;
     padding: 2px 0;
 }
 ul.tree label.hover {
