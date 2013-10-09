@@ -61,7 +61,7 @@ session_start();
                     <!--                    <li class="active"><a href="#">Home</a></li>-->
                     <!--                    <li><a href="#about">About</a></li>-->
                     <!--                    <li><a href="#contact">Contact</a></li>-->
-                    <!--                    <li><a href="/logout.php">Sign Out</a></li>-->
+                                        <li><a href="/logout.php">Sign Out</a></li>
                 </ul>
             </div>
             <!--/.nav-collapse -->
@@ -79,8 +79,7 @@ session_start();
         <tr>
             <form id="featureFilter" name="featureFilter" method="GET" action="viewSavedFiles.php">
                 <div class="controls controls-row">
-                    <input class="span2" type="text" id="username" name="username" placeholder="Username"
-                           value="<?php print $_GET["username"]; ?>">
+                    <input class="span2" type="text" id="viewUsername" name="viewUsername" placeholder="Username" value="<?php print $_GET["viewUsername"]; ?>">
                 </div>
         </tr>
         <tr>
@@ -118,24 +117,10 @@ session_start();
 
 <?php
 
-function viewSavedFiles()
-{
-    //Get username
-    $username = $_GET["username"];
-    if (!$username == "") {
-        displaySavedFiles($username);
-    } else {
-        echo "
-            <h4>
-                Please enter a username to view saved files.
-            </h4>
-            ";
-    }
-}
 
 function displaySavedFiles()
 {
-    $username = $_GET["username"];
+    $username = $_GET["viewUsername"];
 
     if (!$username == "") {
         $files = scandir("./");

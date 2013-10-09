@@ -22,15 +22,5 @@ function deleteOldFile()
     }
 }
 
-//function depricated in favor of above, might still use this later
-//function deleteOldFile_all()
-//{
-//    global $username;
-//
-//    if (!$username == "") {
-//        shell_exec("rm -f " . $username . "*");
-//    }
-//}
-
 header("Location: /pherret.php");
 ?>

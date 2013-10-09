@@ -116,7 +116,7 @@ $resultsFile = $_SESSION['resultsFile'];
 
             echo "
             <h4>
-                Your saved file is: " . $savedFile . ", please retain this for your records.
+                Your saved file is: " . $savedFile . "
             </h4>
             ";
         } else {

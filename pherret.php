@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <?php
 session_start();
-//
-//if ($_SESSION['username'] == NULL)
-//    header("Location: http://pherret.local/login.php");
+
+if ($_SESSION['username'] == NULL)
+    header("Location: http://pherret.local/login.php");
 
 ////Get the branch
 //$branch = $_GET['gitBranch'];
@@ -19,7 +19,7 @@ $featureLoc = 'features/dandb'; //Set to local repo folder that contains feature
 $localRepo = $behatLoc . $featureLoc; //Set to local repo folder that contains features
 
 //Get username
-$username = $_GET["username"];
+$username = $_SESSION["username"];
 
 //Get the environment
 if (isset($_GET['environment'])) {
@@ -81,7 +81,7 @@ if (isset($_GET['browser'])) {
                     <!--                    <li class="active"><a href="#">Home</a></li>-->
                     <!--                    <li><a href="#about">About</a></li>-->
                     <!--                    <li><a href="#contact">Contact</a></li>-->
-                    <!--                    <li><a href="/logout.php">Sign Out</a></li>-->
+                                        <li><a href="/logout.php">Sign Out</a></li>
                 </ul>
             </div>
             <!--/.nav-collapse -->
@@ -114,12 +114,6 @@ if (isset($_GET['browser'])) {
         </tbody>
     </table>
 
-    <!--    <form id="updateRepo" name="updateRepo" method="GET" action="updateRepo.php">-->
-    <!--        <div class="controls controls-row">-->
-    <!--            <button class="btn btn-primary" type="submit">Update Repository - doesn't work</button>-->
-    <!--        </div>-->
-    <!--    </form>-->
-
     <form id="featureFilter" name="featureFilter" method="GET" action="pherretResults.php">
 
         <div class="row">
@@ -129,9 +123,9 @@ if (isset($_GET['browser'])) {
             <div class="span2">
                 <p>Browser</p>
             </div>
-            <div class="span2">
-                <p>Username</p>
-            </div>
+<!--            <div class="span2">-->
+<!--                <p>Username</p>-->
+<!--            </div>-->
         </div>
 
         <div class="controls controls-row">
@@ -148,24 +142,14 @@ if (isset($_GET['browser'])) {
                 <option <?php if ($_GET['browser'] == 'Firefox') { ?>selected="true" <?php }; ?>value="Firefox">
                     Firefox
                 </option>
-                <!--                <option --><?php //if ($_GET['browser'] == 'Chrome') { ?><!--selected="true" -->
-                <?php //}; ?><!--value="Chrome">-->
-                <!--                    Chrome-->
-                <!--                </option>-->
+                <option <?php if ($_GET['browser'] == 'Chrome') { ?>selected="true"  <?php }; ?>value="Chrome">
+                    Chrome
+                </option>
             </select>
 
-            <input class="span2" type="text" id="username" name="username" placeholder="Username"
-                   value="<?php print $_GET["username"]; ?>">
+<!--            <input class="span2" type="text" id="username" name="username" placeholder="Username" value="--><?php //print $_SESSION["username"]; ?><!--">-->
 
         </div>
-
-        <!--            <div class="span2">-->
-        <!--                <label>Branch</label>-->
-        <!--                <!--Changing the branch changes where the link points on GitHub.-->
-        <!--                This does not change which files are shown in the table-->
-        <!--                <input type="text" value="--><?PHP //print $branch; ?><!--" name="gitBranch">-->
-        <!--            </div>-->
-
 
         <label><br></label>
         <button class="btn btn-success" type="submit">Start Features</button>
@@ -175,11 +159,9 @@ if (isset($_GET['browser'])) {
             <?php listFolderFiles($localRepo, array('index.php', 'edit_page.php', 'pages', 'full', 'sanity')); //checkmarkValues()?>
         </ul>
 
-        <div class="span2">
             <label><br></label>
             <button class="btn btn-success" type="submit">Start Features</button>
             <label><br></label>
-        </div>
     </form>
 
 </div>

@@ -65,7 +65,7 @@ date_default_timezone_set('America/Los_Angeles');
                     <!--                    <li class="active"><a href="#">Home</a></li>-->
                     <!--                    <li><a href="#about">About</a></li>-->
                     <!--                    <li><a href="#contact">Contact</a></li>-->
-                    <!--                    <li><a href="/logout.php">Sign Out</a></li>-->
+                                        <li><a href="/logout.php">Sign Out</a></li>
                 </ul>
             </div>
             <!--/.nav-collapse -->
@@ -143,7 +143,7 @@ function commitExecution()
 function writeResultsToFile($output)
 {
 
-    $resultsFile = $_GET["username"] . date("YmdH") . ".html";
+    $resultsFile = $_SESSION["username"] . date("YmdH") . ".html";
     $_SESSION['resultsFile'] = $resultsFile;
 
     $fo = fopen($resultsFile, 'w+');
@@ -189,11 +189,11 @@ function appendFilterToFeature($features)
 
     foreach ($features as $feature) {
         $path_to_file = $localRepo . "/" . $feature;
-        file_put_contents($path_to_file, str_replace("Scenario", "@" . $_GET["username"] . "\nScenario", file_get_contents($path_to_file)));
+        file_put_contents($path_to_file, str_replace("Scenario", "@" . $_SESSION["username"] . "\nScenario", file_get_contents($path_to_file)));
     }
 
     $temp_behat_loc = $behatLoc . "behat.yml";
-    file_put_contents($temp_behat_loc, str_replace("~@mixed", "@" . $_GET["username"], file_get_contents($temp_behat_loc)));
+    file_put_contents($temp_behat_loc, str_replace("~@mixed", "@" . $_SESSION["username"], file_get_contents($temp_behat_loc)));
 
 }
 
@@ -203,18 +203,18 @@ function removeFilterFromFeature($features)
 
     foreach ($features as $feature) {
         $path_to_file = $localRepo . "/" . $feature;
-        file_put_contents($path_to_file, str_replace("@" . $_GET["username"] . "\n", "", file_get_contents($path_to_file)));
+        file_put_contents($path_to_file, str_replace("@" . $_SESSION["username"] . "\n", "", file_get_contents($path_to_file)));
     }
 
     $temp_behat_loc = $behatLoc . "behat.yml";
-    file_put_contents($temp_behat_loc, str_replace("@" . $_GET["username"], "~@mixed", file_get_contents($temp_behat_loc)));
+    file_put_contents($temp_behat_loc, str_replace("@" . $_SESSION["username"], "~@mixed", file_get_contents($temp_behat_loc)));
 
 }
 
 function runRegression()
 {
     //Get username
-    $username = $_GET["username"];
+    $username = $_SESSION["username"];
     if (!$username == "") {
 
         $features = checkmarkValues(); //Get the selected features
