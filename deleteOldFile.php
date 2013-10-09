@@ -8,17 +8,17 @@
  */
 session_start();
 
-//$username = $_SESSION['username'];
+$viewUsername = $_SESSION["viewUsername"];
 $resultsFile = $_SESSION['resultsFile'];
 
 deleteOldFile();
 
 function deleteOldFile()
 {
-    global $resultsFile;
+    global $viewUsername;
 
-    if (!$resultsFile == "") {
-        shell_exec("rm -f " . $resultsFile);
+    if (!$viewUsername == "") {
+        shell_exec("rm -f " . $viewUsername.'*');
     }
 }
 

@@ -9,7 +9,7 @@
  */
 
 session_start();
-
+$_SESSION['viewUsername'] = $_GET['viewUsername'];
 ?>
 
 <html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html"
@@ -61,7 +61,7 @@ session_start();
                     <!--                    <li class="active"><a href="#">Home</a></li>-->
                     <!--                    <li><a href="#about">About</a></li>-->
                     <!--                    <li><a href="#contact">Contact</a></li>-->
-                                        <li><a href="/logout.php">Sign Out</a></li>
+                    <li><a href="/logout.php">Sign Out</a></li>
                 </ul>
             </div>
             <!--/.nav-collapse -->
@@ -82,6 +82,7 @@ session_start();
                     <input class="span2" type="text" id="viewUsername" name="viewUsername" placeholder="Username" value="<?php print $_GET["viewUsername"]; ?>">
                 </div>
         </tr>
+
         <tr>
             <td class="span2">
                 <button class="btn btn-success" type="submit">View Saved Files</button>
@@ -96,46 +97,47 @@ session_start();
                 </form>
             </td>
         </tr>
+
         </tbody>
     </table>
 
     <?php
-
     displaySavedFiles();
-
     ?>
 
-    <div class="btn-group">
-        <p>
+    <?php
+    if ($_SESSION['username'] == 'admin') {
+        echo '<td class="span3">
+                    <form id="deleteOldFile" name="deleteOldFile" method="GET" action="deleteOldFile.php">
+                        <div class="controls controls-row">
+                            <br>
+                            <button class="btn btn-danger" type="submit">Delete Result Files</button>
+                        </div>
+                    </form>
+                </td>';
+    }
+    ?>
 
-            <label><br></label>
+    <?php
 
+    function displaySavedFiles()
+    {
+        $viewUsername = $_GET["viewUsername"];
 
-        </p>
-    </div>
-</div>
-
-<?php
-
-
-function displaySavedFiles()
-{
-    $username = $_GET["viewUsername"];
-
-    if (!$username == "") {
-        $files = scandir("./");
-        foreach ($files as $file) {
-            if (strstr($file, $username)) {
-                echo '<a href="' . ltrim($file, './') . '"target="_blank">' . $file . '</a><br />';
+        if (!$viewUsername == "") {
+            $files = scandir("./");
+            foreach ($files as $file) {
+                if (strstr($file, $viewUsername)) {
+                    echo '<a href="' . ltrim($file, './') . '"target="_blank">' . $file . '</a><br />';
+                }
             }
-        }
-    } else {
-        echo "
+        } else {
+            echo "
             <h4>
                 Please enter a username to view saved files.
             </h4>
             ";
+        }
     }
-}
 
-?>
+    ?>

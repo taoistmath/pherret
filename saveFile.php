@@ -92,12 +92,6 @@ $resultsFile = $_SESSION['resultsFile'];
             </div>
         </form>
 
-        <form id="deleteOldFile" name="deleteOldFile" method="GET" action="deleteOldFile.php">
-            <div class="controls controls-row">
-                <button class="btn btn-danger" type="submit">Delete Results Files</button>
-            </div>
-        </form>
-
         </p>
     </div>
 

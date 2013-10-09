@@ -65,7 +65,7 @@ date_default_timezone_set('America/Los_Angeles');
                     <!--                    <li class="active"><a href="#">Home</a></li>-->
                     <!--                    <li><a href="#about">About</a></li>-->
                     <!--                    <li><a href="#contact">Contact</a></li>-->
-                                        <li><a href="/logout.php">Sign Out</a></li>
+                    <li><a href="/logout.php">Sign Out</a></li>
                 </ul>
             </div>
             <!--/.nav-collapse -->
@@ -90,7 +90,6 @@ date_default_timezone_set('America/Los_Angeles');
     <table>
         <tbody>
         <tr>
-
             <td class="span2">
                 <form id="saveFile" name="saveFile" method="GET" action="saveFile.php">
                     <div class="controls controls-row">
@@ -98,7 +97,6 @@ date_default_timezone_set('America/Los_Angeles');
                     </div>
                 </form>
             </td>
-
             <td class="span2">
                 <form id="featureFilter" name="featureFilter" method="GET" action="pherret.php">
                     <div class="controls controls-row">
@@ -106,18 +104,9 @@ date_default_timezone_set('America/Los_Angeles');
                     </div>
                 </form>
             </td>
-
         </tr>
         </tbody>
     </table>
-
-    <td class="span2">
-        <form id="deleteOldFile" name="deleteOldFile" method="GET" action="deleteOldFile.php">
-            <div class="controls controls-row">
-                <button class="btn btn-danger" type="submit">Delete Results Files</button>
-            </div>
-        </form>
-    </td>
 
 </div>
 
