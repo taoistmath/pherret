@@ -75,7 +75,7 @@ date_default_timezone_set('America/Los_Angeles');
 
 <div class="container">
 
-    <h1>PHERRET</h1>
+    <h2>PHERRET</h2>
 
 </div>
 

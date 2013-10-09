@@ -81,7 +81,7 @@ if (isset($_GET['browser'])) {
                     <!--                    <li class="active"><a href="#">Home</a></li>-->
                     <!--                    <li><a href="#about">About</a></li>-->
                     <!--                    <li><a href="#contact">Contact</a></li>-->
-                                        <li><a href="/logout.php">Sign Out</a></li>
+                    <li><a href="/logout.php">Sign Out</a></li>
                 </ul>
             </div>
             <!--/.nav-collapse -->
@@ -91,7 +91,7 @@ if (isset($_GET['browser'])) {
 
 <div class="container">
 
-    <h1>PHERRET</h1>
+    <h2>PHERRET</h2>
 
     <table>
         <tbody>

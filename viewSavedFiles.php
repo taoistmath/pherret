@@ -71,7 +71,7 @@ $_SESSION['viewUsername'] = $_GET['viewUsername'];
 
 <div class="container">
 
-    <h1>PHERRET</h1>
+    <h2>PHERRET</h2>
 
 
     <table>

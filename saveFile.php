@@ -71,7 +71,7 @@ $resultsFile = $_SESSION['resultsFile'];
 
 <div class="container">
 
-    <h1>PHERRET</h1>
+    <h2>PHERRET</h2>
 
 </div>
 
