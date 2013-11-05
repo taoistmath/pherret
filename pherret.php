@@ -3,7 +3,7 @@
 session_start();
 
 if ($_SESSION['username'] == NULL)
-    header("Location: http://pherret.local/login.php");
+    header("Location: /login.php");
 
 ////Get the branch
 //$branch = $_GET['gitBranch'];

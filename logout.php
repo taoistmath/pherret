@@ -11,5 +11,5 @@ session_start();
 //Clear username session variable
 unset($_SESSION['username']);
 
-header("Location: http://pherret.local/login.php");
+header("Location: /login.php");
 ?>
