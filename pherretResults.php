@@ -135,7 +135,20 @@ function writeResultsToFile($output)
     $resultsFile = $_SESSION["username"] . date("YmdH") . ".html";
     $_SESSION['resultsFile'] = $resultsFile;
 
-    $fo = fopen($resultsFile, 'w+');
+    if (strpos($output,'failed')) {
+        $fo = fopen($resultsFile, 'w+');
+
+        fwrite($fo, "<!DOCTYPE html><h4 style='color:red'>FAILURE</h4><p style='color:red'>Please see bottom of page for results</p>");
+        fclose($fo);
+    } else {
+        $fo = fopen($resultsFile, 'w+');
+
+        fwrite($fo, "<!DOCTYPE html><h4 style='color:green'>SUCCESS</h4><p style='color:green'>Please see bottom of page for results</p>");
+        fclose($fo);
+    }
+
+
+    $fo = fopen($resultsFile, 'a+');
 
     fwrite($fo, "<!DOCTYPE html><pre>$output</pre>");
     fclose($fo);

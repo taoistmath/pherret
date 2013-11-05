@@ -110,7 +110,7 @@
 
         //Check if contains Special Chars
         if(/^[a-zA-Z0-9_.]*$/.test(name) == false) {
-            alert('Your search string contains illegal characters.\n Only AlphaNumeric characters are allowed.');
+            alert('Your username contains illegal characters.\n Only AlphaNumeric characters are allowed.');
             return false;
         }
     });
