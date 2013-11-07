@@ -180,9 +180,18 @@ function writeExecutionString()
     return $executionString;
 }
 
+function importFilename($filename)
+{
+
+    return file($filename.'.csv',FILE_IGNORE_NEW_LINES);
+}
+
 function checkmarkValues()
 {
-    if (isset($_GET['feature'])) {
+    if (!$_GET["importFilename"] == NULL) {
+        $feature = file($_GET["importFilename"].'.csv',FILE_IGNORE_NEW_LINES);
+       return $feature;
+    } elseif (isset($_GET['feature'])) {
         $feature = $_GET['feature'];
         return $feature;
     }
@@ -225,11 +234,11 @@ function runRegression()
         $features = checkmarkValues(); //Get the selected features
         var_dump($features);
 
-//        appendFilterToFeature($features); //Append username to the selected features
-//
-//        commitExecution(); //Commit the execution string
-//
-//        removeFilterFromFeature($features); //Remove username from the selected features
+        appendFilterToFeature($features); //Append username to the selected features
+
+        commitExecution(); //Commit the execution string
+
+        removeFilterFromFeature($features); //Remove username from the selected features
 
     } else {
         noUsername();

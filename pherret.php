@@ -163,33 +163,33 @@ if (isset($_GET['browser'])) {
             <button class="btn btn-success" type="submit" onclick="submitForm('pherretResults.php')">Start Features</button>
             <label><br></label>
 
-    <table>
-        <tbody>
-        <tr>
-            <td class="span2">
-                <div class="col-lg-6">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Test Suite Filename">
-      <span class="input-group-btn">
-        <button class="btn btn-default" type="submit" onclick="submitForm('pherretImport.php')">Import Features</button>
-      </span>
-                    </div><!-- /input-group -->
-                </div><!-- /.col-lg-6 -->
-            </td>
+        <table>
+            <tbody>
+            <tr>
+                <td class="span2">
+                    <div class="col-lg-6">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="importFilename" name="importFilename" placeholder="Test Suite Filename">
+                                <span class="input-group-btn">
+                                  <button class="btn btn-default" type="submit" onclick="submitForm('pherretResults.php')">Import Test Suite</button>
+                                </span>
+                        </div><!-- /input-group -->
+                    </div><!-- /.col-lg-6 -->
+                </td>
 
-            <td class="span2">
-                        <div class="col-lg-6">
-                            <div class="input-group">
-                                <input type="text" class="form-control" id="exportFilename" name="exportFilename" placeholder="Test Suite Filename">
-      <span class="input-group-btn">
-        <button class="btn btn-default" type="submit" onclick="submitForm('pherretExport.php')">Export Test Suite</button>
-      </span>
-                            </div><!-- /input-group -->
-                        </div><!-- /.col-lg-6 -->
-            </td>
-        </tr>
-        </tbody>
-    </table>
+                <td class="span2">
+                    <div class="col-lg-6">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="exportFilename" name="exportFilename" placeholder="Test Suite Filename">
+                                <span class="input-group-btn">
+                                  <button class="btn btn-default" type="submit" onclick="submitForm('pherretExport.php')">Export Test Suite</button>
+                                </span>
+                        </div><!-- /input-group -->
+                    </div><!-- /.col-lg-6 -->
+                </td>
+            </tr>
+            </tbody>
+        </table>
 
     </form>
 
