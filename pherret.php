@@ -152,16 +152,16 @@ if (isset($_GET['browser'])) {
         </div>
 
         <label><br></label>
-        <button class="btn btn-success" type="submit">Start Features</button>
+        <button class="btn btn-success" type="submit" onclick="submitForm('pherretResults.php')">Start Features</button>
         <label><br></label>
 
         <ul class="tree" style="margin-left: 15px;">
             <?php listFolderFiles($localRepo, array('index.php', 'edit_page.php', 'pages', 'full', 'sanity')); //checkmarkValues()?>
         </ul>
 
-            <label><br></label>
-            <button class="btn btn-success" type="submit" onclick="submitForm('pherretResults.php')">Start Features</button>
-            <label><br></label>
+        <label><br></label>
+        <button class="btn btn-success" type="submit" onclick="submitForm('pherretResults.php')">Start Features</button>
+        <label><br></label>
 
         <table>
             <tbody>

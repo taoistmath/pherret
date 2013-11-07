@@ -232,7 +232,6 @@ function runRegression()
     if (!$username == "") {
 
         $features = checkmarkValues(); //Get the selected features
-        var_dump($features);
 
         appendFilterToFeature($features); //Append username to the selected features
 
