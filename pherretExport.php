@@ -3,13 +3,12 @@
 /**
  * Created by JetBrains PhpStorm.
  * User: gfogelberg
- * Date: 9/18/13
- * Time: 12:45 PM
+ * Date: 6/12/13
+ * Time: 9:48 PM
  * To change this template use File | Settings | File Templates.
  */
-
 session_start();
-$_SESSION['viewUsername'] = $_GET['viewUsername'];
+
 ?>
 
 <html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html"
@@ -77,17 +76,6 @@ $_SESSION['viewUsername'] = $_GET['viewUsername'];
     <table>
         <tbody>
         <tr>
-            <form id="featureFilter" name="featureFilter" method="GET" action="viewSavedFiles.php">
-                <div class="controls controls-row">
-                    <input class="span2" type="text" id="viewUsername" name="viewUsername" placeholder="Username" value="<?php print $_GET["viewUsername"]; ?>">
-                </div>
-        </tr>
-
-        <tr>
-            <td class="span2">
-                <button class="btn btn-success" type="submit">View Saved Files</button>
-                </form>
-            </td>
             <td class="span2">
                 <form id="returnToList" name="returnToList" method="GET" action="pherret.php">
                     <div class="controls controls-row">
@@ -97,43 +85,46 @@ $_SESSION['viewUsername'] = $_GET['viewUsername'];
                 </form>
             </td>
         </tr>
-
         </tbody>
     </table>
 </div>
 
+
+
     <?php
-    displaySavedFiles();
 
-    if ($_SESSION['username'] == 'admin') {
-        echo '<td class="span3">
-                    <form id="deleteOldFile" name="deleteOldFile" method="GET" action="deleteOldFile.php">
-                        <div class="controls controls-row">
-                            <br>
-                            <button class="btn btn-danger" type="submit">Delete Result Files</button>
-                        </div>
-                    </form>
-                </td>';
-    }
+    exportFile();
 
-    function displaySavedFiles()
+    function exportFile()
     {
-        $viewUsername = $_GET["viewUsername"];
 
-        if (!$viewUsername == "") {
-            $files = scandir("./");
-            foreach ($files as $file) {
-                if (strstr($file, $viewUsername)) {
-                    echo '<a href="' . ltrim($file, './') . '"target="_blank">' . $file . '</a><br />';
-                }
-            }
-        } else {
-            echo "
+        $saveFileName = $_GET["exportFilename"].'.csv';
+        $features = checkmarkValues();
+
+        $file = fopen($saveFileName,"w");
+
+        foreach ($features as $feature)
+        {
+            fputcsv($file,explode(',',$feature));
+        }
+
+        fclose($file);
+
+        echo "
             <h4>
-                Please enter a username to view saved files.
+                Your Test Suite '$saveFileName' has been saved
             </h4>
             ";
-        }
+
     }
 
-    ?>
+function checkmarkValues()
+{
+    if (isset($_GET['feature'])) {
+        $feature = $_GET['feature'];
+        return $feature;
+    }
+}
+
+
+?>

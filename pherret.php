@@ -114,7 +114,7 @@ if (isset($_GET['browser'])) {
         </tbody>
     </table>
 
-    <form id="featureFilter" name="featureFilter" method="GET" action="pherretResults.php">
+    <form id="featureFilter" name="featureFilter" method="GET">
 
         <div class="row">
             <div class="span2">
@@ -160,8 +160,37 @@ if (isset($_GET['browser'])) {
         </ul>
 
             <label><br></label>
-            <button class="btn btn-success" type="submit">Start Features</button>
+            <button class="btn btn-success" type="submit" onclick="submitForm('pherretResults.php')">Start Features</button>
             <label><br></label>
+
+    <table>
+        <tbody>
+        <tr>
+            <td class="span2">
+                <div class="col-lg-6">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Test Suite Filename">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="submit" onclick="submitForm('pherretImport.php')">Import Features</button>
+      </span>
+                    </div><!-- /input-group -->
+                </div><!-- /.col-lg-6 -->
+            </td>
+
+            <td class="span2">
+                        <div class="col-lg-6">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="exportFilename" name="exportFilename" placeholder="Test Suite Filename">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="submit" onclick="submitForm('pherretExport.php')">Export Test Suite</button>
+      </span>
+                            </div><!-- /input-group -->
+                        </div><!-- /.col-lg-6 -->
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
     </form>
 
 </div>
@@ -229,6 +258,12 @@ function listFolderFiles($dir, $exclude)
     $(function () {
         $('ul.tree').checkTree();
     });
+
+    function submitForm(action)
+    {
+        document.getElementById('featureFilter').action = action;
+        document.getElementById('featureFilter').submit();
+    }
 </script>
 
 </body>

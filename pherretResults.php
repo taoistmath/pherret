@@ -223,12 +223,13 @@ function runRegression()
     if (!$username == "") {
 
         $features = checkmarkValues(); //Get the selected features
+        var_dump($features);
 
-        appendFilterToFeature($features); //Append username to the selected features
-
-        commitExecution(); //Commit the execution string
-
-        removeFilterFromFeature($features); //Remove username from the selected features
+//        appendFilterToFeature($features); //Append username to the selected features
+//
+//        commitExecution(); //Commit the execution string
+//
+//        removeFilterFromFeature($features); //Remove username from the selected features
 
     } else {
         noUsername();
