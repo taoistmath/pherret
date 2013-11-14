@@ -92,11 +92,15 @@ date_default_timezone_set('America/Los_Angeles');
         <tr>
             <td class="span2">
                 <form id="saveFile" name="saveFile" method="GET" action="saveFile.php">
+                    <p>Please enter a new name to save your file.</p>
+                    <input type="text" class="form-control" id="saveResults" name="saveResults" value="<?php echo $_SESSION['resultsFile'] ?>">
                     <div class="controls controls-row">
                         <button class="btn btn-success" type="submit">Save Results File</button>
                     </div>
                 </form>
             </td>
+        </tr>
+        <tr>
             <td class="span2">
                 <form id="featureFilter" name="featureFilter" method="GET" action="pherret.php">
                     <div class="controls controls-row">
@@ -203,6 +207,9 @@ function appendFilterToFeature($features)
 
     foreach ($features as $feature) {
         $path_to_file = $localRepo . "/" . $feature;
+
+        file_put_contents($path_to_file, preg_replace("/#\s*Scenario/", "#CommentedOut", file_get_contents($path_to_file)));
+
         file_put_contents($path_to_file, str_replace("Scenario", "@" . $_SESSION["username"] . "\nScenario", file_get_contents($path_to_file)));
     }
 
@@ -218,6 +225,7 @@ function removeFilterFromFeature($features)
     foreach ($features as $feature) {
         $path_to_file = $localRepo . "/" . $feature;
         file_put_contents($path_to_file, str_replace("@" . $_SESSION["username"] . "\n", "", file_get_contents($path_to_file)));
+        file_put_contents($path_to_file, str_replace("#CommentedOut", "#  Scenario", file_get_contents($path_to_file)));
     }
 
     $temp_behat_loc = $behatLoc . "behat.yml";

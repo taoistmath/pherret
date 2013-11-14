@@ -10,6 +10,7 @@
 session_start();
 
 $resultsFile = $_SESSION['resultsFile'];
+$saveResults = $_GET['saveResults'];
 
 ?>
 
@@ -99,9 +100,9 @@ $resultsFile = $_SESSION['resultsFile'];
 
     function saveFile()
     {
-        global $resultsFile;
+        global $resultsFile, $saveResults;
 
-        if (!file_get_contents($resultsFile) == "") {
+        if ($resultsFile == $saveResults) {
 
             $extension_pos = strrpos($resultsFile, '.'); // find position of the last dot, so where the extension starts
             $savedFile = substr($resultsFile, 0, $extension_pos) . generateRandomString() . substr($resultsFile, $extension_pos);
@@ -110,10 +111,18 @@ $resultsFile = $_SESSION['resultsFile'];
 
             echo "
             <h4>
-                Your saved file is: " . $savedFile . "
+                Because you did not specify a new name, your saved file is: " . $savedFile . "
             </h4>
             ";
-        } else {
+        } elseif($resultsFile != $saveResults) {
+            file_put_contents($saveResults, file_get_contents($resultsFile));//write the contents of the result file to the saved file
+
+            echo "
+            <h4>
+                Your saved file is: " . $saveResults . "
+            </h4>
+            ";
+        } elseif (file_get_contents($resultsFile) == "") {
             echo "
             <h4>
                 You must a run a test to save a file.
