@@ -139,26 +139,25 @@ function writeResultsToFile($output)
     $resultsFile = $_SESSION["username"] . date("YmdH") . ".html";
     $_SESSION['resultsFile'] = $resultsFile;
 
-    if (strpos($output,'screenshot')) {
-        $fo = fopen($resultsFile, 'w+');
+    touch($resultsFile);
+    chmod($resultsFile, 0666);
 
-        fwrite($fo, "<!DOCTYPE html><h4 style='color:red'>FAILURE</h4><p style='color:red'>Please see bottom of page for results</p>");
+    if (strpos($output,'screenshot')) {
+        $fo = fopen($resultsFile, 'w');
+
+        fwrite($fo, "<!DOCTYPE html><h4 style='color:red'>FAILURE</h4><p style='color:red'>Please see bottom of page for results</p><pre>$output</pre>");
         fclose($fo);
     } elseif(strpos($output, 'passed)')) {
-        $fo = fopen($resultsFile, 'w+');
+        $fo = fopen($resultsFile, 'w');
 
-        fwrite($fo, "<!DOCTYPE html><h4 style='color:green'>SUCCESS</h4><p style='color:green'>Please see bottom of page for results</p>");
+        fwrite($fo, "<!DOCTYPE html><h4 style='color:green'>SUCCESS</h4><p style='color:green'>Please see bottom of page for results</p><pre>$output</pre>");
         fclose($fo);
     } else {
-        $fo = fopen($resultsFile, 'w+');
+        $fo = fopen($resultsFile, 'w');
+
+        fwrite($fo, "<!DOCTYPE html><pre>$output</pre>");
         fclose($fo);
     }
-
-
-    $fo = fopen($resultsFile, 'a+');
-
-    fwrite($fo, "<!DOCTYPE html><pre>$output</pre>");
-    fclose($fo);
 
     resultsLink($resultsFile);
 
