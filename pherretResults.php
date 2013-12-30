@@ -178,16 +178,16 @@ function resultsLink($resultsFile)
 function writeExecutionString()
 {
     global $behatLoc, $featureLoc;
-    $executionString = "cd " . $behatLoc . " && bin/behat --profile " . strtolower($_GET['environment']) . "_" . strtolower($_GET['browser']) . " " . $featureLoc;
+    //only use parallel flag if set to higher than 1
+    if ($_GET['parallel'] > 1) {
+        $executionString = "cd " . $behatLoc . " && bin/behat --profile " . strtolower($_GET['environment']) . "_" . strtolower($_GET['browser']) . " --parallel " . $_GET['parallel'] . " " . $featureLoc;
+    }
+    else {
+        $executionString = "cd " . $behatLoc . " && bin/behat --profile " . strtolower($_GET['environment']) . "_" . strtolower($_GET['browser']) . " " . $featureLoc;
+    }
 
     return $executionString;
 }
-
-// function importFilename($filename)
-// {
-//     echo "importFilename";
-//     return file($filename.'.csv',FILE_IGNORE_NEW_LINES);
-// }
 
 function checkmarkValues()
 {

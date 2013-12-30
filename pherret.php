@@ -31,6 +31,10 @@ if (isset($_GET['browser'])) {
     $browser = strtolower($_GET['browser']);
 }
 
+//Set parallel
+if (isset($_GET['parallel'])) {
+    $parallel = strtolower($_GET['parallel']);
+}
 ?>
 
 <html lang="en" xmlns="http://www.w3.org/1999/html">
@@ -123,9 +127,9 @@ if (isset($_GET['browser'])) {
             <div class="span2">
                 <p>Browser</p>
             </div>
-<!--            <div class="span2">-->
-<!--                <p>Username</p>-->
-<!--            </div>-->
+            <div class="span2">
+                <p># of Browsers</p>
+            </div>
         </div>
 
         <div class="controls controls-row">
@@ -147,7 +151,7 @@ if (isset($_GET['browser'])) {
                 </option>
             </select>
 
-<!--            <input class="span2" type="text" id="username" name="username" placeholder="Username" value="--><?php //print $_SESSION["username"]; ?><!--">-->
+           <input class="span2" type="text" id="parallel" name="parallel" value="1">
 
         </div>
 
