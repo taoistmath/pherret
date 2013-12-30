@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+
+<?php include('includes/head.php'); ?>
+
 <?php
 /**
  * Created by JetBrains PhpStorm.
@@ -14,75 +17,19 @@ $saveResults = $_GET['saveResults'];
 
 ?>
 
-<html lang="en" xmlns="http://www.w3.org/1999/html">
-<head>
-    <meta charset="utf-8">
-    <title>PHERRET</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <!-- Le styles -->
-    <link href="../assets/css/bootstrap.css" rel="stylesheet">
-    <style>
-        body {
-            padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
-        }
-    </style>
-    <link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
-    <link href="./style.css" rel="stylesheet">
-
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-    <script src="../assets/js/html5shiv.js"></script>
-    <![endif]-->
-
-    <!-- Fav and touch icons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
-    <link rel="shortcut icon" href="../assets/ico/favicon.png">
-</head>
-
 <body>
 
-<div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container">
-            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="brand" href="#">PHp Engineering Repository REgression Tool (PHERRET)</a>
-
-            <div class="nav-collapse collapse">
-                <ul class="nav">
-                    <!--                    <li class="active"><a href="#">Home</a></li>-->
-                    <!--                    <li><a href="#about">About</a></li>-->
-                    <!--                    <li><a href="#contact">Contact</a></li>-->
-                    <!--                    <li><a href="/logout.php">Sign Out</a></li>-->
-                </ul>
-            </div>
-            <!--/.nav-collapse -->
-        </div>
-    </div>
-</div>
+<?php include('includes/header.php'); ?>
 
 <div class="container">
 
     <h2>PHERRET</h2>
 
-</div>
-
-<div class="container">
-
-    <?php
+<?php
 
     saveFile();
 
-    ?>
+?>
 
     <div class="btn-group">
         <p>
@@ -96,48 +43,52 @@ $saveResults = $_GET['saveResults'];
         </p>
     </div>
 
-    <?php
+</div>
 
-    function saveFile()
-    {
-        global $resultsFile, $saveResults;
+<?php
 
-        if ($resultsFile == $saveResults) {
+function saveFile()
+{
+    global $resultsFile, $saveResults;
 
-            $extension_pos = strrpos($resultsFile, '.'); // find position of the last dot, so where the extension starts
-            $savedFile = substr($resultsFile, 0, $extension_pos) . generateRandomString() . substr($resultsFile, $extension_pos);
+    if ($resultsFile == $saveResults) {
 
-            file_put_contents($savedFile, file_get_contents($resultsFile));//write the contents of the result file to the saved file
+        $extension_pos = strrpos($resultsFile, '.'); // find position of the last dot, so where the extension starts
+        $savedFile = substr($resultsFile, 0, $extension_pos) . generateRandomString() . substr($resultsFile, $extension_pos);
 
-            echo "
-            <h4>
-                Because you did not specify a new name, your saved file is: " . $savedFile . "
-            </h4>
-            ";
-        } elseif($resultsFile != $saveResults) {
-            file_put_contents($saveResults, file_get_contents($resultsFile));//write the contents of the result file to the saved file
+        file_put_contents($savedFile, file_get_contents($resultsFile));//write the contents of the result file to the saved file
 
-            echo "
-            <h4>
-                Your saved file is: " . $saveResults . "
-            </h4>
-            ";
-        } elseif (file_get_contents($resultsFile) == "") {
-            echo "
-            <h4>
-                You must a run a test to save a file.
-            </h4>
-            ";
-        }
+        echo "
+        <h4>
+            Because you did not specify a new name, your saved file is: " . $savedFile . "
+        </h4>
+        ";
+    } elseif($resultsFile != $saveResults) {
+        file_put_contents($saveResults, file_get_contents($resultsFile));//write the contents of the result file to the saved file
+
+        echo "
+        <h4>
+            Your saved file is: " . $saveResults . "
+        </h4>
+        ";
+    } elseif (file_get_contents($resultsFile) == "") {
+        echo "
+        <h4>
+            You must a run a test to save a file.
+        </h4>
+        ";
     }
+}
 
-    function generateRandomString($length = 4)
-    {
-        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $randomString = '';
-        for ($i = 0; $i < $length; $i++) {
-            $randomString .= $characters[rand(0, strlen($characters) - 1)];
-        }
-        return $randomString;
+function generateRandomString($length = 4)
+{
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, strlen($characters) - 1)];
     }
-    ?>
+    return $randomString;
+}
+?>
+
+<?php include('includes/footer.php'); ?>
