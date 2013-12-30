@@ -183,17 +183,24 @@ function writeExecutionString()
     return $executionString;
 }
 
-function importFilename($filename)
-{
-
-    return file($filename.'.csv',FILE_IGNORE_NEW_LINES);
-}
+// function importFilename($filename)
+// {
+//     echo "importFilename";
+//     return file($filename.'.csv',FILE_IGNORE_NEW_LINES);
+// }
 
 function checkmarkValues()
 {
     if (!$_GET["importFilename"] == NULL) {
-        $feature = file($_GET["importFilename"].'.csv',FILE_IGNORE_NEW_LINES);
-       return $feature;
+        // Check to see if importFilename contains '.csv' - leave alone if it does, otherwise add it.
+        if (strpos($_GET["importFilename"],'.csv') !== false) {
+            $feature = file($_GET["importFilename"],FILE_IGNORE_NEW_LINES);
+            return $feature;
+        } 
+        else {
+            $feature = file($_GET["importFilename"].'.csv',FILE_IGNORE_NEW_LINES);
+            return $feature;
+        }
     } elseif (isset($_GET['feature'])) {
         $feature = $_GET['feature'];
         return $feature;

@@ -171,7 +171,7 @@ if (isset($_GET['browser'])) {
                         <div class="input-group">
                             <input type="text" class="form-control" id="importFilename" name="importFilename" placeholder="Test Suite Filename">
                                 <span class="input-group-btn">
-                                  <button class="btn btn-default" type="submit" onclick="submitForm('pherretResults.php')">Import Test Suite</button>
+                                  <button class="btn btn-default" type="submit" onclick="submitForm('pherretResults.php')">Run Test Suite</button>
                                 </span>
                         </div><!-- /input-group -->
                     </div><!-- /.col-lg-6 -->
@@ -182,7 +182,7 @@ if (isset($_GET['browser'])) {
                         <div class="input-group">
                             <input type="text" class="form-control" id="exportFilename" name="exportFilename" placeholder="Test Suite Filename">
                                 <span class="input-group-btn">
-                                  <button class="btn btn-default" type="submit" onclick="submitForm('pherretExport.php')">Export Test Suite</button>
+                                  <button class="btn btn-default" type="submit" onclick="submitForm('pherretExport.php')">Save Test Suite</button>
                                 </span>
                         </div><!-- /input-group -->
                     </div><!-- /.col-lg-6 -->

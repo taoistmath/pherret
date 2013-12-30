@@ -97,8 +97,13 @@ session_start();
 
     function exportFile()
     {
-
-        $saveFileName = $_GET["exportFilename"].'.csv';
+        // Check to see if exportFilename contains '.csv' - leave alone if it does, otherwise add it.
+        if (strpos($_GET["exportFilename"],'.csv') !== false) {
+            $saveFileName = $_GET["exportFilename"];
+        }
+        else {
+            $saveFileName = $_GET["exportFilename"].'.csv';
+        }
         $features = checkmarkValues();
 
         $file = fopen($saveFileName,"w");
