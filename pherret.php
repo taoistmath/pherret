@@ -135,9 +135,9 @@ if (isset($_GET['parallel'])) {
                 <td class="span2">
                     <div class="col-lg-6">
                         <div class="input-group">
-                            <input type="text" class="form-control" id="exportFilename" name="exportFilename" placeholder="Test Suite Filename" onsubmit="return validateExportForm();">
+                            <input type="text" class="form-control" id="exportFilename" name="exportFilename" placeholder="Test Suite Filename">
                                 <span class="input-group-btn">
-                                  <button class="btn btn-default" type="submit">Save Test Suite</button>
+                                  <button class="btn btn-default" type="submit" onclick="submitForm('pherretExport.php')">Save Test Suite</button>
                                 </span>
                         </div><!-- /input-group -->
                     </div><!-- /.col-lg-6 -->
@@ -199,29 +199,6 @@ function listFolderFiles($dir, $exclude)
         document.getElementById('featureFilter').action = action;
         document.getElementById('featureFilter').submit();
     }
-
-    $('form').submit(function () {
-
-        // Get the Login Name value and trim it
-        var name = $.trim($('#exportFilename').val());
-
-        // Check if empty of not
-        if (name  === '') {
-            alert('Filename is a required field.');
-            return false;
-        }
-
-        //Check if contains Special Chars
-        if(/^[a-zA-Z0-9_.]*$/.test(name) == false) {
-            alert('Your Filename contains illegal characters.\n Only AlphaNumeric characters are allowed.');
-            return false;
-        }
-
-        else {
-            submitForm('pherretExport.php')
-        }
-    });
-
 </script>
 
 </body>
