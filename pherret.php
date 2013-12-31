@@ -126,20 +126,20 @@ if (isset($_GET['parallel'])) {
                         <div class="input-group">
                             <input type="text" class="form-control" id="importFilename" name="importFilename" placeholder="Test Suite Filename">
                                 <span class="input-group-btn">
-                                  <button class="btn btn-default" type="submit">Run Test Suite</button>
+                                  <button class="btn btn-default" type="submit" onclick="return validateImport()">Run Test Suite</button>
                                 </span>
                         </div><!-- /input-group -->
                     </div><!-- /.col-lg-6 -->
                 </td>
-    </form>
+    <!-- </form> -->
 
-    <form id="exportForm" name="exportForm" method="GET" action="pherretExport.php" onsubmit="return validateExport()">
+    <!-- <form id="exportForm" name="exportForm" method="GET" action="pherretExport.php" onsubmit="return validateExport()"> -->
                 <td class="span2">
                     <div class="col-lg-6">
                         <div class="input-group">
                             <input type="text" class="form-control" id="exportFilename" name="exportFilename" placeholder="Test Suite Filename">
                                 <span class="input-group-btn">
-                                  <button class="btn btn-default" type="submit">Save Test Suite</button>
+                                  <button class="btn btn-default" type="submit" onclick="return validateExport()">Save Test Suite</button>
                                 </span>
                         </div><!-- /input-group -->
                     </div><!-- /.col-lg-6 -->
@@ -204,7 +204,7 @@ function submitForm(action)
 
 function validateExport()
 {
-    var filename = document.forms["exportForm"]["exportFilename"].value;
+    var filename = document.forms["featureFilter"]["exportFilename"].value;
     
     // Check if empty of not
     if (filename === null || filename === ""){
@@ -217,6 +217,31 @@ function validateExport()
         alert('Test Suite name contains illegal characters.\n Only AlphaNumeric characters are allowed.');
         return false;
     }
+
+    //submit the form for export
+    else
+        submitForm('pherretExport.php')
+}
+
+function validateImport()
+{
+    var filename = document.forms["featureFilter"]["importFilename"].value;
+    
+    // Check if empty of not
+    if (filename === null || filename === ""){
+        alert("Test Suite name cannot be blank");
+        return false;
+    }
+
+    //Check if contains Special Chars
+    else if (/^[a-zA-Z0-9_.]*$/.test(filename) == false) {
+        alert('Test Suite name contains illegal characters.\n Only AlphaNumeric characters are allowed.');
+        return false;
+    }
+
+    //submit the form for export
+    else
+        submitForm('pherretResults.php')
 }
 </script>
 
