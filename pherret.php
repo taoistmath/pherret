@@ -69,7 +69,7 @@ if (isset($_GET['parallel'])) {
         </tbody>
     </table>
 
-    <form id="featureFilter" name="featureFilter" method="GET" action="pherretResults.php" onsubmit="return validateForm()">
+    <form id="featureFilter" name="featureFilter" method="GET">
 
         <div class="row">
             <div class="span2">
@@ -107,7 +107,7 @@ if (isset($_GET['parallel'])) {
         </div>
 
         <label><br></label>
-        <button class="btn btn-success" type="submit">Start Features</button>
+        <button class="btn btn-success" type="submit" onclick="submitForm('pherretResults.php')">Start Features</button>
         <label><br></label>
 
         <ul class="tree" style="margin-left: 15px;">
@@ -115,7 +115,7 @@ if (isset($_GET['parallel'])) {
         </ul>
 
         <label><br></label>
-        <button class="btn btn-success" type="submit">Start Features</button>
+        <button class="btn btn-success" type="submit" onclick="submitForm('pherretResults.php')">Start Features</button>
         <label><br></label>
 
         <table>
@@ -131,9 +131,7 @@ if (isset($_GET['parallel'])) {
                         </div><!-- /input-group -->
                     </div><!-- /.col-lg-6 -->
                 </td>
-    <!-- </form> -->
 
-    <!-- <form id="exportForm" name="exportForm" method="GET" action="pherretExport.php" onsubmit="return validateExport()"> -->
                 <td class="span2">
                     <div class="col-lg-6">
                         <div class="input-group">

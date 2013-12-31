@@ -46,7 +46,7 @@ date_default_timezone_set('America/Los_Angeles');
                     <p>Please enter a new name to save your file.</p>
                     <input type="text" class="form-control" id="saveResults" name="saveResults" value="<?php echo $_SESSION['resultsFile'] ?>">
                     <div class="controls controls-row">
-                        <button class="btn btn-success" type="submit">Save Results File</button>
+                        <button class="btn btn-success" type="submit" onclick="return validateSaveResults()">Save Results File</button>
                     </div>
                 </form>
             </td>
@@ -211,3 +211,23 @@ function runRegression()
 ?>
 
 <?php include('includes/footer.php'); ?>
+
+<script>
+function validateSaveResults()
+{
+    var filename = document.forms["saveFile"]["saveResults"].value;
+    
+    // Check if empty of not
+    if (filename === null || filename === ""){
+        alert("Saved file name cannot be blank");
+        return false;
+    }
+
+    //Check if contains Special Chars
+    else if (/^[a-zA-Z0-9_.]*$/.test(filename) == false) {
+        alert('Saved file name contains illegal characters.\n Only AlphaNumeric characters are allowed.');
+        return false;
+    }
+
+}
+</script>

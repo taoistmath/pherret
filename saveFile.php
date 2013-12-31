@@ -64,6 +64,11 @@ function saveFile()
         </h4>
         ";
     } elseif($resultsFile != $saveResults) {
+
+        if (strpos($saveResults,'.html') === false) {
+            $saveResults = $saveResults.'.html';
+        } 
+
         file_put_contents($saveResults, file_get_contents($resultsFile));//write the contents of the result file to the saved file
 
         echo "
