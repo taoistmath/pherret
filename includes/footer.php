@@ -21,5 +21,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
     <script src="./CheckTree/jquery.checktree.js"></script>
 
-     <p>Copyright &copy 2013 <a href="https://github.com/taoistmath/pherret">PHERRET by taoistmath</a></p>
+    <p><!--Copyright &copy 2013  -->
+        <a href="https://github.com/taoistmath/pherret" target="_blank">PHERRET by taoistmath</a>
+    </p>
 </div> <!-- end #footer -->

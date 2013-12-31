@@ -1,3 +1,5 @@
+<?php include('variables/variables.php'); ?>
+
 <div id="header">
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="navbar-inner">
@@ -7,7 +9,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="brand" href="#">PHp Engineering Repository REgression Tool (PHERRET) Woo Hoo!</a>
+                <a class="brand" href="/pherret.php">PHp Engineering Repository REgression Tool (PHERRET)</a>
 
                 <div class="nav-collapse collapse">
                     <ul class="nav">
@@ -22,4 +24,3 @@
         </div>
     </div>
 </div> <!-- end #header -->
-
