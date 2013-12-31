@@ -69,7 +69,7 @@ if (isset($_GET['parallel'])) {
         </tbody>
     </table>
 
-    <form id="featureFilter" name="featureFilter" method="GET">
+    <form id="featureFilter" name="featureFilter" method="GET" action="pherretResults.php" onsubmit="return validateForm()">
 
         <div class="row">
             <div class="span2">
@@ -107,7 +107,7 @@ if (isset($_GET['parallel'])) {
         </div>
 
         <label><br></label>
-        <button class="btn btn-success" type="submit" onclick="submitForm('pherretResults.php')">Start Features</button>
+        <button class="btn btn-success" type="submit">Start Features</button>
         <label><br></label>
 
         <ul class="tree" style="margin-left: 15px;">
@@ -115,7 +115,7 @@ if (isset($_GET['parallel'])) {
         </ul>
 
         <label><br></label>
-        <button class="btn btn-success" type="submit" onclick="submitForm('pherretResults.php')">Start Features</button>
+        <button class="btn btn-success" type="submit">Start Features</button>
         <label><br></label>
 
         <table>
@@ -126,18 +126,20 @@ if (isset($_GET['parallel'])) {
                         <div class="input-group">
                             <input type="text" class="form-control" id="importFilename" name="importFilename" placeholder="Test Suite Filename">
                                 <span class="input-group-btn">
-                                  <button class="btn btn-default" type="submit" onclick="submitForm('pherretResults.php')">Run Test Suite</button>
+                                  <button class="btn btn-default" type="submit">Run Test Suite</button>
                                 </span>
                         </div><!-- /input-group -->
                     </div><!-- /.col-lg-6 -->
                 </td>
+    </form>
 
+    <form id="exportForm" name="exportForm" method="GET" action="pherretExport.php" onsubmit="return validateExport()">
                 <td class="span2">
                     <div class="col-lg-6">
                         <div class="input-group">
                             <input type="text" class="form-control" id="exportFilename" name="exportFilename" placeholder="Test Suite Filename">
                                 <span class="input-group-btn">
-                                  <button class="btn btn-default" type="submit" onclick="submitForm('pherretExport.php')">Save Test Suite</button>
+                                  <button class="btn btn-default" type="submit">Save Test Suite</button>
                                 </span>
                         </div><!-- /input-group -->
                     </div><!-- /.col-lg-6 -->
@@ -190,15 +192,32 @@ function listFolderFiles($dir, $exclude)
 <?php include('includes/footer.php'); ?>
 
 <script>
-    $(function () {
-        $('ul.tree').checkTree();
-    });
+$(function () {
+    $('ul.tree').checkTree();
+});
 
-    function submitForm(action)
-    {
-        document.getElementById('featureFilter').action = action;
-        document.getElementById('featureFilter').submit();
+function submitForm(action)
+{
+    document.getElementById('featureFilter').action = action;
+    document.getElementById('featureFilter').submit();
+}
+
+function validateExport()
+{
+    var filename = document.forms["exportForm"]["exportFilename"].value;
+    
+    // Check if empty of not
+    if (filename === null || filename === ""){
+        alert("Test Suite name cannot be blank");
+        return false;
     }
+
+    //Check if contains Special Chars
+    else if (/^[a-zA-Z0-9_.]*$/.test(filename) == false) {
+        alert('Test Suite name contains illegal characters.\n Only AlphaNumeric characters are allowed.');
+        return false;
+    }
+}
 </script>
 
 </body>
