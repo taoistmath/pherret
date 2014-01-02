@@ -196,8 +196,8 @@ $(function () {
 
 function submitForm(action)
 {
-        document.getElementById('featureFilter').action = action;
-        document.getElementById('featureFilter').submit();
+        document.featureFilter.action = action;
+        document.featureFilter.submit();
 }
 
 function checkCheckBoxes() {
@@ -216,7 +216,7 @@ submitForm('pherretResults.php');
 
 function validateImport()
 {
-    var filename = document.forms["featureFilter"]["importFilename"].value;
+    var filename = document.featureFilter.importFilename.value;
     
     // Check if empty of not
     if (filename === null || filename === ""){
@@ -237,7 +237,7 @@ function validateImport()
 
 function validateExport()
 {
-    var filename = document.forms["featureFilter"]["exportFilename"].value;
+    var filename = document.featureFilter.exportFilename.value;
     
     // Check if empty of not
     if (filename === null || filename === ""){
