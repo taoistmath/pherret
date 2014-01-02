@@ -107,7 +107,7 @@ if (isset($_GET['parallel'])) {
         </div>
 
         <label><br></label>
-        <button class="btn btn-success" type="submit" onclick="submitForm('pherretResults.php')">Start Features</button>
+        <button class="btn btn-success" type="submit" onclick="return checkCheckBoxes()">Start Features</button>
         <label><br></label>
 
         <ul class="tree" style="margin-left: 15px;">
@@ -115,7 +115,7 @@ if (isset($_GET['parallel'])) {
         </ul>
 
         <label><br></label>
-        <button class="btn btn-success" type="submit" onclick="submitForm('pherretResults.php')">Start Features</button>
+        <button class="btn btn-success" type="submit" onclick="return checkCheckBoxes()">Start Features</button>
         <label><br></label>
 
         <table>
@@ -196,8 +196,43 @@ $(function () {
 
 function submitForm(action)
 {
-    document.getElementById('featureFilter').action = action;
-    document.getElementById('featureFilter').submit();
+        document.getElementById('featureFilter').action = action;
+        document.getElementById('featureFilter').submit();
+}
+
+function checkCheckBoxes() {
+var flag = 0;
+for (var i = 0; i< document.featureFilter["feature[]"].length; i++) {
+if(document.featureFilter["feature[]"][i].checked){
+flag ++;
+}
+}
+if (flag == 0) {
+alert("You haven\'t chosen any tests to run!");
+return false;
+}
+submitForm('pherretResults.php');
+}
+
+function validateImport()
+{
+    var filename = document.forms["featureFilter"]["importFilename"].value;
+    
+    // Check if empty of not
+    if (filename === null || filename === ""){
+        alert("Test Suite name cannot be blank");
+        return false;
+    }
+
+    //Check if contains Special Chars
+    else if (/^[a-zA-Z0-9_.]*$/.test(filename) == false) {
+        alert('Test Suite name contains illegal characters.\n Only AlphaNumeric characters are allowed.');
+        return false;
+    }
+
+    //submit the form for export
+    else
+        submitForm('pherretResults.php')
 }
 
 function validateExport()
@@ -221,26 +256,6 @@ function validateExport()
         submitForm('pherretExport.php')
 }
 
-function validateImport()
-{
-    var filename = document.forms["featureFilter"]["importFilename"].value;
-    
-    // Check if empty of not
-    if (filename === null || filename === ""){
-        alert("Test Suite name cannot be blank");
-        return false;
-    }
-
-    //Check if contains Special Chars
-    else if (/^[a-zA-Z0-9_.]*$/.test(filename) == false) {
-        alert('Test Suite name contains illegal characters.\n Only AlphaNumeric characters are allowed.');
-        return false;
-    }
-
-    //submit the form for export
-    else
-        submitForm('pherretResults.php')
-}
 </script>
 
 </body>
