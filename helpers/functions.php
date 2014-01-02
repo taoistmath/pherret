@@ -1,75 +1,37 @@
-<!DOCTYPE html>
-
-<?php 
-include('includes/head.php'); 
-?>
-
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: gfogelberg
- * Date: 9/5/13
- * Time: 1:56 PM
- * To change this template use File | Settings | File Templates.
- */
 
-session_start();
-
-date_default_timezone_set('America/Los_Angeles');
-
-?>
-
-<body>
-
-<?php include('includes/header.php'); ?>
-
-<div class="container">
-
-    <h2>PHERRET</h2>
-
-</div>
-
-<div class="container">
-
-    <?php
-
-    runRegression();
-
-    ?>
-
-    <table>
-        <tbody>
-        <tr>
-            <td class="span2">
-                <form id="saveFile" name="saveFile" method="GET">
-                    <p>Please enter a new name to save your file.</p>
-                    <input type="text" class="form-control" id="saveResults" name="saveResults" value="<?php echo $_SESSION['resultsFile'] ?>">
-                    <div class="controls controls-row">
-                        <button class="btn btn-success" type="submit" onclick="return validateField(this.form,'saveResults','saveFile.php')">Save Results File</button>
-                    </div>
-                </form>
-            </td>
-        </tr>
-        <tr>
-            <td class="span2">
-                <form id="featureFilter" name="featureFilter" method="GET" action="pherret.php">
-                    <div class="controls controls-row">
-                        <button class="btn btn-primary" type="submit">Return to List</button>
-                    </div>
-                </form>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-
-</div>
-
-<?php include('includes/footer.php'); ?>
-
-</body>
-</html>
-
-<?php
+function listFolderFiles($dir, $exclude)
+{
+    global $localRepo;
+    $files = scandir($dir);
+    $folder = end(explode('/', $dir));
+    foreach ($files as $file) {
+        if (is_array($exclude) and !in_array($file, $exclude)) {
+            if ($file != '.' && $file != '..') {
+                if (is_dir($dir . '/' . $file)) {
+                    echo '
+                    <li>
+                        <input type="checkbox">
+                        <label>' . $file . '</label>
+                        <ul>
+                    ';
+                } else {
+                    echo '
+                    <li>
+                        <input type="checkbox" name="feature[]" id="feature" value="' . $folder . '/' . $file . '">
+                        <a href="' . ltrim($localRepo . '/' . $folder . '/' . $file, './') . '"target="_blank">' . $file . '</a><br />
+                    </li>
+                    ';
+                }
+                if (is_dir($dir . '/' . $file))
+                {
+                    listFolderFiles($dir . '/' . $file, $exclude);
+                    echo '</ul>';
+                }
+            }
+        }
+    }
+}
 
 function noUsername()
 {
@@ -191,25 +153,6 @@ function removeFilterFromFeature($features)
     $temp_behat_loc = $behatLoc . "behat.yml";
     file_put_contents($temp_behat_loc, str_replace("@" . $_SESSION["username"], "~@mixed", file_get_contents($temp_behat_loc)));
 
-}
-
-function runRegression()
-{
-    //Get username
-    $username = $_SESSION["username"];
-    if (!$username == "") {
-
-        $features = checkmarkValues(); //Get the selected features
-
-        appendFilterToFeature($features); //Append username to the selected features
-
-        commitExecution(); //Commit the execution string
-
-        removeFilterFromFeature($features); //Remove username from the selected features
-
-    } else {
-        noUsername();
-    }
 }
 
 ?>

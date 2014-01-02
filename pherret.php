@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 
-<?php include('includes/head.php'); ?>
+<?php 
+include('includes/head.php'); 
+?>
 
 <?php
 session_start();
@@ -16,10 +18,6 @@ if ($_SESSION['username'] == NULL)
 //Set up paths
 //$repoLoc = '/var/www/helios/tools/regression/features/dandb/mixed_stack'; //Set to absolute path to behat.yml file in your repository
 //shell_exec("cp -r " . $repoLoc . " ./tools/regression/features/dandb");
-
-$behatLoc = 'tools/regression/'; //Set to relative path to location of behat.yml file
-$featureLoc = 'features/dandb'; //Set to local repo folder that contains features
-$localRepo = $behatLoc . $featureLoc; //Set to local repo folder that contains features
 
 //Get username
 $username = $_SESSION["username"];
@@ -107,7 +105,7 @@ if (isset($_GET['parallel'])) {
         </div>
 
         <label><br></label>
-        <button class="btn btn-success" type="submit" onclick="return checkCheckBoxes()">Start Features</button>
+        <button class="btn btn-success" type="submit" onclick="return checkCheckBoxes(this.form,'pherretResults.php')">Start Features</button>
         <label><br></label>
 
         <ul class="tree" style="margin-left: 15px;">
@@ -115,7 +113,7 @@ if (isset($_GET['parallel'])) {
         </ul>
 
         <label><br></label>
-        <button class="btn btn-success" type="submit" onclick="return checkCheckBoxes()">Start Features</button>
+        <button class="btn btn-success" type="submit" onclick="return checkCheckBoxes(this.form,'pherretResults.php')">Start Features</button>
         <label><br></label>
 
         <table>
@@ -126,7 +124,7 @@ if (isset($_GET['parallel'])) {
                         <div class="input-group">
                             <input type="text" class="form-control" id="importFilename" name="importFilename" placeholder="Test Suite Filename">
                                 <span class="input-group-btn">
-                                  <button class="btn btn-default" type="submit" onclick="return validateImport()">Run Test Suite</button>
+                                  <button class="btn btn-default" type="submit" onclick="return validateField(this.form,'importFilename','pherretResults.php')">Run Test Suite</button>
                                 </span>
                         </div><!-- /input-group -->
                     </div><!-- /.col-lg-6 -->
@@ -137,7 +135,7 @@ if (isset($_GET['parallel'])) {
                         <div class="input-group">
                             <input type="text" class="form-control" id="exportFilename" name="exportFilename" placeholder="Test Suite Filename">
                                 <span class="input-group-btn">
-                                  <button class="btn btn-default" type="submit" onclick="return validateExport()">Save Test Suite</button>
+                                  <button class="btn btn-default" type="submit" onclick="return validateField(this.form,'exportFilename','pherretExport.php')">Save Test Suite</button>
                                 </span>
                         </div><!-- /input-group -->
                     </div><!-- /.col-lg-6 -->
@@ -189,74 +187,13 @@ function listFolderFiles($dir, $exclude)
 
 <?php include('includes/footer.php'); ?>
 
+</body>
+</html>
+
 <script>
+
 $(function () {
     $('ul.tree').checkTree();
 });
 
-function submitForm(action)
-{
-        document.featureFilter.action = action;
-        document.featureFilter.submit();
-}
-
-function checkCheckBoxes() {
-var flag = 0;
-for (var i = 0; i< document.featureFilter["feature[]"].length; i++) {
-if(document.featureFilter["feature[]"][i].checked){
-flag ++;
-}
-}
-if (flag == 0) {
-alert("You haven\'t chosen any tests to run!");
-return false;
-}
-submitForm('pherretResults.php');
-}
-
-function validateImport()
-{
-    var filename = document.featureFilter.importFilename.value;
-    
-    // Check if empty of not
-    if (filename === null || filename === ""){
-        alert("Test Suite name cannot be blank");
-        return false;
-    }
-
-    //Check if contains Special Chars
-    else if (/^[a-zA-Z0-9_.]*$/.test(filename) == false) {
-        alert('Test Suite name contains illegal characters.\n Only AlphaNumeric characters are allowed.');
-        return false;
-    }
-
-    //submit the form for export
-    else
-        submitForm('pherretResults.php')
-}
-
-function validateExport()
-{
-    var filename = document.featureFilter.exportFilename.value;
-    
-    // Check if empty of not
-    if (filename === null || filename === ""){
-        alert("Test Suite name cannot be blank");
-        return false;
-    }
-
-    //Check if contains Special Chars
-    else if (/^[a-zA-Z0-9_.]*$/.test(filename) == false) {
-        alert('Test Suite name contains illegal characters.\n Only AlphaNumeric characters are allowed.');
-        return false;
-    }
-
-    //submit the form for export
-    else
-        submitForm('pherretExport.php')
-}
-
 </script>
-
-</body>
-</html>
