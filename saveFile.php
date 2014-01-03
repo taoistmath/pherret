@@ -51,6 +51,9 @@ function saveFile()
 {
     global $resultsFile, $saveResults;
 
+    if (strpos($saveResults,'.html') === false)
+            $saveResults = $saveResults.'.html';
+
     if ($resultsFile == $saveResults) {
 
         $extension_pos = strrpos($resultsFile, '.'); // find position of the last dot, so where the extension starts
@@ -64,10 +67,6 @@ function saveFile()
         </h4>
         ";
     } elseif($resultsFile != $saveResults) {
-
-        if (strpos($saveResults,'.html') === false) {
-            $saveResults = $saveResults.'.html';
-        } 
 
         file_put_contents($saveResults, file_get_contents($resultsFile));//write the contents of the result file to the saved file
 
