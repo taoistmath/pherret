@@ -1,7 +1,7 @@
 <?php 
 include('helpers/variables.php');
-include('helpers/javascript.php');
-include('helpers/functions.php');
+// include('helpers/javascript.php');
+// include('helpers/functions.php');
 ?>
 
 <head>
