@@ -29,6 +29,12 @@ function validateField(form,field,action)
         return false;
     }
 
+    //Check if contains more than 3 characters
+    if (name.length <= 3) {
+        document.getElementById(errorField).innerHTML="Must be more than 3 characters.";
+        return false;
+    }
+
     //Check if contains Special Chars
     if (/^[a-zA-Z0-9_.]*$/.test(name) == false) {
         document.getElementById(errorField).innerHTML="Only AlphaNumeric characters are allowed.";
