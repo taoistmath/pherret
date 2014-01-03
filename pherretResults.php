@@ -64,6 +64,11 @@ date_default_timezone_set('America/Los_Angeles');
 
 </div>
 
+<?php include('includes/footer.php'); ?>
+
+</body>
+</html>
+
 <?php
 
 function noUsername()
@@ -208,34 +213,3 @@ function runRegression()
 }
 
 ?>
-
-<?php include('includes/footer.php'); ?>
-
-<script>
-function validateField(form,field,action)
-{
-    var filename = form[field].value;
-    
-    // Check if empty of not
-    if (filename === null || filename === ""){
-        alert("Saved file name cannot be blank");
-        return false;
-    }
-
-    //Check if contains Special Chars
-    else if (/^[a-zA-Z0-9_.]*$/.test(filename) == false) {
-        alert('Saved file name contains illegal characters.\nOnly AlphaNumeric characters are allowed.');
-        return false;
-    }
-
-    //Submit the form for running
-    submitForm(form,action)
-}
-
-function submitForm(form,action)
-{
-    form.action = action;
-    form.submit();
-}
-
-</script>
