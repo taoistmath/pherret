@@ -1,3 +1,9 @@
+<?php 
+include('helpers/variables.php');
+include('helpers/javascript.php');
+// include('helpers/functions.php');
+?>
+
 <head>
     <meta charset="utf-8">
     <title>PHERRET</title>

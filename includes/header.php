@@ -1,5 +1,3 @@
-<?php include('variables/variables.php'); ?>
-
 <div id="header">
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="navbar-inner">
