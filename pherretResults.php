@@ -68,3 +68,26 @@ date_default_timezone_set('America/Los_Angeles');
 
 </body>
 </html>
+
+<?php
+
+function runRegression()
+{
+    //Get username
+    $username = $_SESSION["username"];
+    if (!$username == "") {
+
+        $features = checkmarkValues(); //Get the selected features
+
+        appendFilterToFeature($features); //Append username to the selected features
+
+        commitExecution(); //Commit the execution string
+
+        removeFilterFromFeature($features); //Remove username from the selected features
+
+    } else {
+        noUsername();
+    }
+}
+
+?>
