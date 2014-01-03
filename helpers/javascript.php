@@ -1,7 +1,4 @@
 <script>
-// $(function () {
-//     $('ul.tree').checkTree();
-// });
 
 function checkCheckBoxes(form,action) {
     //Count number of features selected
@@ -27,13 +24,13 @@ function validateField(form,field,action)
 
     // Check if empty of not
     if (name === null || name === "") {
-        alert("Username is a required field.");
+        alert("This is a required field.");
         return false;
     }
 
     //Check if contains Special Chars
     if (/^[a-zA-Z0-9_.]*$/.test(name) == false) {
-        alert('Your username contains illegal characters.\nOnly AlphaNumeric characters are allowed.');
+        alert('Only AlphaNumeric characters are allowed.');
         return false;
     }
 
@@ -48,4 +45,3 @@ function submitForm(form,action)
 }
 
 </script>
-
