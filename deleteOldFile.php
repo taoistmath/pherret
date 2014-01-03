@@ -8,19 +8,18 @@
  */
 session_start();
 
-$viewUsername = $_SESSION["viewUsername"];
-$resultsFile = $_SESSION['resultsFile'];
+$viewSavedFiles = $_SESSION["viewSavedFiles"];
 
 deleteOldFile();
 
 function deleteOldFile()
 {
-    global $viewUsername;
+    global $viewSavedFiles;
 
-    if (!$viewUsername == "") {
-        shell_exec("rm -f " . $viewUsername.'*');
+    if (!$viewSavedFiles == "") {
+        shell_exec("rm -f " . $viewSavedFiles.'*');
     }
 }
 
-header("Location: /pherret.php");
+header("Location: /viewSavedFiles.php");
 ?>

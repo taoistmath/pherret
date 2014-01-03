@@ -12,7 +12,9 @@
     <h2>PHERRET</h2>
 
     <form id="signin" class="form-signin" name="signin" method="POST">
-        <input id = "username" class="span2" type="text" class="input-block-level" placeholder="username" name="username">
+        <input id = "username" class="span2" name="username" type="text" class="input-block-level" placeholder="username">
+        <br>
+        <span style="color:red;" id="usernameError"></span>
 <!--        <input type="password" class="input-block-level" placeholder="Password">-->
 <!--        <label class="checkbox">-->
 <!--            <input type="checkbox" value="remember-me"> Remember me-->

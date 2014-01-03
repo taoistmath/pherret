@@ -21,16 +21,17 @@ function checkCheckBoxes(form,action) {
 function validateField(form,field,action)
 {
     var name = form[field].value;
+    var errorField = field+"Error"
 
     // Check if empty of not
     if (name === null || name === "") {
-        alert("This is a required field.");
+        document.getElementById(errorField).innerHTML="This is a required field.";
         return false;
     }
 
     //Check if contains Special Chars
     if (/^[a-zA-Z0-9_.]*$/.test(name) == false) {
-        alert('Only AlphaNumeric characters are allowed.');
+        document.getElementById(errorField).innerHTML="Only AlphaNumeric characters are allowed.";
         return false;
     }
 

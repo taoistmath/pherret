@@ -3,16 +3,9 @@
 <?php include('includes/head.php'); ?>
 
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: gfogelberg
- * Date: 9/18/13
- * Time: 12:45 PM
- * To change this template use File | Settings | File Templates.
- */
 
 session_start();
-$_SESSION['viewUsername'] = $_GET['viewUsername'];
+$_SESSION['viewSavedFiles'] = $_GET['viewSavedFiles'];
 ?>
 
 <body>
@@ -25,35 +18,27 @@ $_SESSION['viewUsername'] = $_GET['viewUsername'];
 
     <h2>PHERRET</h2>
 
-    <table>
-        <tbody>
-        <tr>
-            <form id="featureFilter" name="featureFilter" method="GET" action="viewSavedFiles.php">
-                <div class="controls controls-row">
-                    <input class="span2" type="text" id="viewUsername" name="viewUsername" placeholder="Username" value="<?php print $_GET["viewUsername"]; ?>">
-                </div>
-        </tr>
-
-        <tr>
-            <td class="span2">
-                <button class="btn btn-success" type="submit">View Saved Files</button>
-                </form>
-            </td>
-            <td class="span2">
-                <form id="returnToList" name="returnToList" method="GET" action="pherret.php">
-                    <div class="controls controls-row">
-                        <br>
-                        <button class="btn btn-primary" type="submit">Return to List</button>
+    <form id="saveFile" name="saveFile" method="GET">
+        <div class="form-horizontal">
+            <div class="row">
+                <div class="span4">
+                    <div class="col-lg-6">
+                        <div class="input-group">
+                            <input class="span2" type="text" id="viewSavedFiles" name="viewSavedFiles" placeholder="Username" value="<?php print $_GET["viewSavedFiles"]; ?>">
+                            <span class="input-group-btn">
+                                <button class="btn btn-success" type="submit" onclick="return validateField(this.form,'viewSavedFiles','viewSavedFiles.php')">View Saved Files</button>
+                                <br>
+                                <span style="color:red;" id="viewSavedFilesError"></span>
+                            </span>
+                        </div>
                     </div>
-                </form>
-            </td>
-        </tr>
-
-        </tbody>
-    </table>
-</div>
+                </div>
+            </div>
+        </div>
+    </form>
 
 <?php
+
     displaySavedFiles();
 
     if ($_SESSION['username'] == 'admin') {
@@ -65,29 +50,30 @@ $_SESSION['viewUsername'] = $_GET['viewUsername'];
                         </div>
                     </form>
                 </td>';
-    } else {
-        echo '<br />';
-                
-    }
+    } 
+
+?>
+
+    <form id="returnToList" name="returnToList" method="GET" action="pherret.php">
+        <div class="controls controls-row">
+            <button class="btn btn-primary" type="submit">Return to List</button>
+        </div>
+    </form>
+
+</div>
+
+<?php
 
 function displaySavedFiles()
 {
-    $viewUsername = $_GET["viewUsername"];
+    $viewSavedFiles = $_GET["viewSavedFiles"];
 
-    if (!$viewUsername == "") {
         $files = scandir("./");
         foreach ($files as $file) {
-            if (strstr($file, $viewUsername)) {
+            if (strstr($file, $viewSavedFiles)) {
                 echo '<a href="' . ltrim($file, './') . '"target="_blank">' . $file . '</a><br />';
             }
         }
-    } else {
-        echo "
-        <h4>
-            Please enter a username to view saved files.
-        </h4>
-        ";
-    }
 }
 
 ?>

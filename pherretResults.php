@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 
-<?php 
-include('includes/head.php'); 
-?>
+<?php include('includes/head.php'); ?>
 
 <?php
 /**
@@ -27,41 +25,39 @@ date_default_timezone_set('America/Los_Angeles');
 
     <h2>PHERRET</h2>
 
-</div>
-
-<div class="container">
-
     <?php
 
     runRegression();
 
     ?>
 
-    <table>
-        <tbody>
-        <tr>
-            <td class="span2">
-                <form id="saveFile" name="saveFile" method="GET">
-                    <p>Please enter a new name to save your file.</p>
-                    <input type="text" class="form-control" id="saveResults" name="saveResults" value="<?php echo $_SESSION['resultsFile'] ?>">
-                    <div class="controls controls-row">
-                        <button class="btn btn-success" type="submit" onclick="return validateField(this.form,'saveResults','saveFile.php')">Save Results File</button>
-                    </div>
-                </form>
-            </td>
-        </tr>
-        <tr>
-            <td class="span2">
-                <form id="featureFilter" name="featureFilter" method="GET" action="pherret.php">
-                    <div class="controls controls-row">
-                        <button class="btn btn-primary" type="submit">Return to List</button>
-                    </div>
-                </form>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+    <p>Please enter a new name to save your file.</p>
 
+    <form id="saveFile" name="saveFile" method="GET">
+        <div class="form-horizontal">
+            <div class="row">
+                <div class="span4">
+                    <div class="col-lg-6">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="saveResults" name="saveResults" value="<?php echo $_SESSION['resultsFile'] ?>">
+                            <span class="input-group-btn">
+                                <button class="btn btn-success" type="submit" onclick="return validateField(this.form,'saveResults','saveFile.php')">Save Results File</button>
+                                <span style="color:red;" id="saveResultsError"></span>
+                                <br>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <form id="returnToList" name="returnToList" method="GET" action="pherret.php">
+        <div class="controls controls-row">
+            <button class="btn btn-primary" type="submit">Return to List</button>
+        </div>
+    </form>
+    
 </div>
 
 <?php include('includes/footer.php'); ?>
@@ -120,11 +116,9 @@ function writeResultsToFile($output)
 function resultsLink($resultsFile)
 {
     echo "
-
-            <h4>
-                <a href='" . $resultsFile . "' target='_blank' style='text-decoration:underline'>Click To See Test Results</a>
-            </h4>
-
+        <h4>
+            <a href='" . $resultsFile . "' target='_blank' style='text-decoration:underline'>Click To See Test Results</a>
+        </h4>
     ";
 
 }

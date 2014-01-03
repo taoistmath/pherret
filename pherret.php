@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 
-<?php 
-include('includes/head.php'); 
-?>
+<?php include('includes/head.php'); ?>
 
 <?php
 session_start();
@@ -100,12 +98,12 @@ if (isset($_GET['parallel'])) {
                 </option>
             </select>
 
-           <input class="span2" type="text" id="parallel" name="parallel" value="1">
+            <input class="span2" type="text" id="parallel" name="parallel" value="1">
 
         </div>
 
         <label><br></label>
-        <button class="btn btn-success" type="submit" onclick="return checkCheckBoxes(this.form,'pherretResults.php')">Start Features</button>
+             <button class="btn btn-success" type="submit" onclick="return checkCheckBoxes(this.form,'pherretResults.php')">Start Features</button>
         <label><br></label>
 
         <ul class="tree" style="margin-left: 15px;">
@@ -113,36 +111,43 @@ if (isset($_GET['parallel'])) {
         </ul>
 
         <label><br></label>
-        <button class="btn btn-success" type="submit" onclick="return checkCheckBoxes(this.form,'pherretResults.php')">Start Features</button>
+             <button class="btn btn-success" type="submit" onclick="return checkCheckBoxes(this.form,'pherretResults.php')">Start Features</button>
         <label><br></label>
 
-        <table>
-            <tbody>
-            <tr>
-                <td class="span2">
+ 
+        <div class="form-horizontal">
+            <div class="row">
+                <div class="span4">
                     <div class="col-lg-6">
                         <div class="input-group">
                             <input type="text" class="form-control" id="importFilename" name="importFilename" placeholder="Test Suite Filename">
-                                <span class="input-group-btn">
-                                  <button class="btn btn-default" type="submit" onclick="return validateField(this.form,'importFilename','pherretResults.php')">Run Test Suite</button>
-                                </span>
-                        </div><!-- /input-group -->
-                    </div><!-- /.col-lg-6 -->
-                </td>
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="submit" onclick="return validateField(this.form,'importFilename','pherretResults.php')">Run Test Suite</button>
+                                <span style="color:red;" id="importFilenameError"></span>
+                                <br><br>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-                <td class="span2">
+        <div class="form-horizontal">
+            <div class="row">
+                <div class="span4">
                     <div class="col-lg-6">
                         <div class="input-group">
                             <input type="text" class="form-control" id="exportFilename" name="exportFilename" placeholder="Test Suite Filename">
-                                <span class="input-group-btn">
-                                  <button class="btn btn-default" type="submit" onclick="return validateField(this.form,'exportFilename','pherretExport.php')">Save Test Suite</button>
-                                </span>
-                        </div><!-- /input-group -->
-                    </div><!-- /.col-lg-6 -->
-                </td>
-            </tr>
-            </tbody>
-        </table>
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="submit" onclick="return validateField(this.form,'exportFilename','pherretExport.php')">Save Test Suite</button>
+                                <span style="color:red;" id="exportFilenameError"></span>
+                                <br>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </form>
 
