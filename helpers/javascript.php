@@ -21,7 +21,7 @@ function checkCheckBoxes(form,action) {
 function validateField(form,field,action)
 {
     var name = form[field].value;
-    var errorField = field+"Error"
+    var errorField = field+"Error";
 
     // Check if empty of not
     if (name === null || name === "") {
@@ -49,6 +49,16 @@ function submitForm(form,action)
 {
     form.action = action;
     form.submit();
+}
+
+function verifyDelete(form,action)
+{
+    var confirmation = confirm("This will delete all files in the displayed list.");
+
+    if (confirmation ==  true)
+        submitForm(form,action)
+    else
+        return false
 }
 
 </script>

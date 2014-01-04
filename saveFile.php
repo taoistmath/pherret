@@ -45,6 +45,11 @@ $saveResults = $_GET['saveResults'];
 
 </div>
 
+<?php include('includes/footer.php'); ?>
+
+</body>
+</html>
+
 <?php
 
 function saveFile()
@@ -93,6 +98,5 @@ function generateRandomString($length = 4)
     }
     return $randomString;
 }
-?>
 
-<?php include('includes/footer.php'); ?>
+?>

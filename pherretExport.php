@@ -39,6 +39,11 @@ session_start();
     </table>
 </div>
 
+<?php include('includes/footer.php'); ?>
+
+</body>
+</html>
+
 <?php
 
     exportFile();
@@ -80,5 +85,3 @@ function checkmarkValues()
 }
 
 ?>
-
-<?php include('includes/footer.php'); ?>

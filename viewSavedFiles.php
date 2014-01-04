@@ -46,7 +46,7 @@ $_SESSION['viewSavedFiles'] = $_GET['viewSavedFiles'];
                     <form id="deleteOldFile" name="deleteOldFile" method="GET" action="deleteOldFile.php">
                         <div class="controls controls-row">
                             <br>
-                            <button class="btn btn-danger" type="submit">Delete Result Files</button>
+                            <button class="btn btn-danger" type="submit" onclick="return verifyDelete(\'deleteOldFile\',\'deleteOldFile.php\')">Delete Result Files</button>
                         </div>
                     </form>
                 </td>';
@@ -61,6 +61,11 @@ $_SESSION['viewSavedFiles'] = $_GET['viewSavedFiles'];
     </form>
 
 </div>
+
+<?php include('includes/footer.php'); ?>
+
+</body>
+</html>
 
 <?php
 
@@ -77,5 +82,3 @@ function displaySavedFiles()
 }
 
 ?>
-
-<?php include('includes/footer.php'); ?>

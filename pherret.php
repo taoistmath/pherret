@@ -153,6 +153,11 @@ if (isset($_GET['parallel'])) {
 
 </div>
 
+<?php include('includes/footer.php'); ?>
+
+</body>
+</html>
+
 <?php
 
 function listFolderFiles($dir, $exclude)
@@ -189,11 +194,6 @@ function listFolderFiles($dir, $exclude)
 }
 
 ?>
-
-<?php include('includes/footer.php'); ?>
-
-</body>
-</html>
 
 <script>
 
