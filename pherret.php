@@ -42,8 +42,6 @@ if (isset($_GET['parallel'])) {
 
 <div class="container">
 
-    <h2>PHERRET</h2>
-
     <table>
         <tbody>
         <tr>

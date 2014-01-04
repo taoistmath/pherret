@@ -16,8 +16,6 @@ $_SESSION['viewSavedFiles'] = $_GET['viewSavedFiles'];
 
 <div class="container">
 
-    <h2>PHERRET</h2>
-
     <form id="saveFile" name="saveFile" method="GET">
         <div class="form-horizontal">
             <div class="row">

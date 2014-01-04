@@ -20,8 +20,11 @@ session_start();
 
 <div class="container">
 
-    <h2>PHERRET</h2>
+<?php
 
+    exportFile();
+
+?>
 
     <table>
         <tbody>
@@ -44,9 +47,7 @@ session_start();
 </body>
 </html>
 
-<?php
-
-    exportFile();
+<?php    
 
 function exportFile()
 {

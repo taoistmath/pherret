@@ -23,8 +23,6 @@ date_default_timezone_set('America/Los_Angeles');
 
 <div class="container">
 
-    <h2>PHERRET</h2>
-
     <?php
 
     runRegression();

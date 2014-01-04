@@ -32,4 +32,7 @@ include('helpers/javascript.php');
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="./assets/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="./assets/ico/apple-touch-icon-57-precomposed.png">
     <link rel="shortcut icon" href="./assets/ico/favicon.png">
+
+    <h2><img border="0" src="images/ferret.jpg" alt="ferret clip art" width="57" height="50" align="middle">PHERRET</h2>
+
 </head><!-- end #head -->

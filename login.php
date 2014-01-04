@@ -9,8 +9,6 @@
 
 <div class="container">
 
-    <h2>PHERRET</h2>
-
     <form id="signin" class="form-signin" name="signin" method="POST">
         <input id = "username" class="span2" name="username" type="text" class="input-block-level" placeholder="username">
         <br>

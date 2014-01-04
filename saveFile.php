@@ -23,13 +23,11 @@ $saveResults = $_GET['saveResults'];
 
 <div class="container">
 
-    <h2>PHERRET</h2>
-
-<?php
+    <?php
 
     saveFile();
 
-?>
+    ?>
 
     <div class="btn-group">
         <p>
