@@ -17,7 +17,7 @@ function deleteOldFile()
     global $viewSavedFiles;
 
     if (!$viewSavedFiles == "") {
-        shell_exec("rm -f " . $viewSavedFiles.'*');
+        shell_exec("rm -f *" . $viewSavedFiles.'*');
     }
 }
 
