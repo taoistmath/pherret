@@ -10,7 +10,7 @@ function checkCheckBoxes(form,action) {
     }
     //Check if count is greater than or equal to 1
     if (flag == 0) {
-        alert("You haven\'t chosen any tests to run!");
+        alert("You haven\'t chosen any tests!");
         return false;
     }
 
@@ -29,20 +29,25 @@ function validateField(form,field,action)
         return false;
     }
 
-    //Check if contains more than 3 characters
+    // Check if contains more than 3 characters
     if (name.length <= 3) {
         document.getElementById(errorField).innerHTML="Must be more than 3 characters.";
         return false;
     }
 
-    //Check if contains Special Chars
+    // Check if contains Special Chars
     if (/^[a-zA-Z0-9_.]*$/.test(name) == false) {
         document.getElementById(errorField).innerHTML="Only AlphaNumeric characters are allowed.";
         return false;
     }
 
-    //Submit the form for running
-    submitForm(form,action)
+    // Verify x>=1 tests chosen before saving
+    if (field == "exportFilename")
+        return checkCheckBoxes(form,action);
+
+    // Submit the form for running
+    else
+        submitForm(form,action);
 }
 
 function submitForm(form,action)
