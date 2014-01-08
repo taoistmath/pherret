@@ -69,19 +69,28 @@ function noUsername()
 {
     echo "
         <div class='container'>
-            <h4>Please Return to List and enter your Username.</h4>
+            <h4 style='color:red'>Please Return to List and enter your Username.</h4>
         </div>
     ";
 }
 
-function commitExecution()
+function testSuiteNotExist()
+{
+    echo "
+        <div class='container'>
+            <h4 style='color:red'>The entered Test Suite does not exist!</h4>
+        </div>
+    ";
+    return;
+}
+function commitExecution($features)
 {
     $execution = writeExecutionString();
     $output = shell_exec($execution);
-    writeResultsToFile($output);
+    writeResultsToFile($output,$features);
 }
 
-function writeResultsToFile($output)
+function writeResultsToFile($output,$features)
 {
 
     $resultsFile = $_SESSION["username"] . date("YmdH") . ".html";
@@ -107,18 +116,23 @@ function writeResultsToFile($output)
         fclose($fo);
     }
 
-    resultsLink($resultsFile);
+    resultsLink($resultsFile,$features);
 
 }
 
-function resultsLink($resultsFile)
+function resultsLink($resultsFile,$features)
 {
-    echo "
+    // $feature = file($_GET["importFilename"],FILE_IGNORE_NEW_LINES);
+    if ($features == NULL){
+        testSuiteNotExist();
+    }
+    else{
+        echo "
         <h4>
             <a href='" . $resultsFile . "' target='_blank' style='text-decoration:underline'>Click To See Test Results</a>
         </h4>
-    ";
-
+        ";
+    }
 }
 
 function writeExecutionString()
@@ -195,7 +209,7 @@ function runRegression()
 
         appendFilterToFeature($features); //Append username to the selected features
 
-        commitExecution(); //Commit the execution string
+        commitExecution($features); //Commit the execution string
 
         removeFilterFromFeature($features); //Remove username from the selected features
 
