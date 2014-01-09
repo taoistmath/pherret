@@ -29,26 +29,7 @@ date_default_timezone_set('America/Los_Angeles');
 
     ?>
 
-    <p>Please enter a new name to save your file.</p>
-
-    <form id="saveFile" name="saveFile" method="GET">
-        <div class="form-horizontal">
-            <div class="row">
-                <div class="span4">
-                    <div class="col-lg-6">
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="saveResults" name="saveResults" value="<?php echo $_SESSION['resultsFile'] ?>">
-                            <span class="input-group-btn">
-                                <button class="btn btn-success" type="submit" onclick="return validateField(this.form,'saveResults','saveFile.php')">Save Results File</button>
-                                <span style="color:red;" id="saveResultsError"></span>
-                                <br>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
+    
 
     <form id="returnToList" name="returnToList" method="GET" action="pherret.php">
         <div class="controls controls-row">
@@ -71,7 +52,7 @@ function noUsername()
         <div class='container'>
             <h4 style='color:red'>Please Return to List and enter your Username.</h4>
         </div>
-    ";
+        ";
 }
 
 function testSuiteNotExist()
@@ -80,9 +61,39 @@ function testSuiteNotExist()
         <div class='container'>
             <h4 style='color:red'>The entered Test Suite does not exist!</h4>
         </div>
-    ";
-    return;
+        ";
 }
+
+function displayResults($resultsFile)
+{
+    echo '
+        <h4>
+            <a href="' . $resultsFile . '" target="_blank" style="text-decoration:underline">Click To See Test Results</a>
+        </h4>
+
+        <p>Please enter a new name to save your file.</p>
+
+        <form id="saveFile" name="saveFile" method="GET">
+            <div class="form-horizontal">
+                <div class="row">
+                    <div class="span4">
+                        <div class="col-lg-6">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="saveResults" name="saveResults" value="'.$_SESSION["resultsFile"].'">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-success" type="submit" onclick="return validateField(this.form,\'saveResults\',\'saveFile.php\')">Save Results File</button>
+                                    <span style="color:red;" id="saveResultsError"></span>
+                                    <br>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        ';
+}
+
 function commitExecution($features)
 {
     $execution = writeExecutionString();
@@ -123,16 +134,10 @@ function writeResultsToFile($output,$features)
 function resultsLink($resultsFile,$features)
 {
     // $feature = file($_GET["importFilename"],FILE_IGNORE_NEW_LINES);
-    if ($features == NULL){
+    if ($features == NULL)
         testSuiteNotExist();
-    }
-    else{
-        echo "
-        <h4>
-            <a href='" . $resultsFile . "' target='_blank' style='text-decoration:underline'>Click To See Test Results</a>
-        </h4>
-        ";
-    }
+    else
+        displayResults($resultsFile);
 }
 
 function writeExecutionString()

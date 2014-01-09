@@ -49,6 +49,8 @@ $_SESSION['viewSavedFiles'] = $_GET['viewSavedFiles'];
                     </form>
                 </td>';
     } 
+    else
+        echo '<br>';
 
 ?>
 
