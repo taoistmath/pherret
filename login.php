@@ -28,7 +28,7 @@ if (isset($_GET['error'])) {
     <form id="signin" class="form-signin" name="signin" method="POST" action="includes/process_login.php" >
         <input id="email" class="span2" name="email" type="text" class="input-block-level" placeholder="Email">
         <br>
-        <span style="color:red;" id="usernameError"></span>
+        <span style="color:red;" id="emailError"></span>
         <input id="password" class="span2" type="password" class="input-block-level" placeholder="Password">
 <!--         <label class="checkbox">
             <input type="checkbox" value="remember-me"> Remember me

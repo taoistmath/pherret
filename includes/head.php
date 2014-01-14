@@ -38,6 +38,4 @@ include 'helpers/variables.php';
     <script type="text/JavaScript" src="js/forms.js"></script> 
     <script type="text/JavaScript" src="js/pherret.js"></script> 
 
-    <h2><img border="0" src="images/ferret.jpg" alt="ferret clip art" width="57" height="50" align="middle">PHERRET</h2>
-
-</head><!-- end #head -->
+</head>

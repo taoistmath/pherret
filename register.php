@@ -35,12 +35,16 @@ if (!empty($error_msg)) {
 
     <form id="registration" class="form-signin" name="registration" method="post" action="<?php echo esc_url($_SERVER['PHP_SELF']); ?>" >
         <input id="username" class="span2" name="username" type="text" class="input-block-level" placeholder="Username" />
+        <span style="color:red;" id="usernameError"></span>
         <br>
         <input id="email" class="span2" name="email" type="text" class="input-block-level" placeholder="Email" />
+        <span style="color:red;" id="emailError"></span>
         <br>
         <input id="password" class="span2" name="password" type="password" class="input-block-level" placeholder="Password" />
+        <span style="color:red;" id="passwordError"></span>
         <br>
         <input id="confirmpwd" class="span2" name="confirmpwd" type="password" class="input-block-level" placeholder="Confirm Password" />
+        <span style="color:red;" id="confirmpwdError"></span>
         <br>
         <button class="btn btn-primary" type="submit" 
             onclick="return regformhash(this.form, 

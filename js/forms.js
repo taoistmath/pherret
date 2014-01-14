@@ -14,52 +14,69 @@ function formhash(form, password) {
     // Finally submit the form. 
     form.submit();
 }
- 
+
 function regformhash(form, uid, email, password, conf) {
-     // Check each field has a value
-    if (uid.value == ''        || 
-          email.value == ''  || 
-          password.value == ''       || 
-          conf.value == '') {
- 
-        alert('You must provide all the requested details. Please try again');
-        return false;
-    }
- 
-    // Check the username
- 
+    var errorCt = 0;
+    
+    //Check Username
     re = /^\w+$/; 
-    if(!re.test(form.username.value)) { 
-        alert("Username must contain only letters, numbers and underscores. Please try again"); 
-        form.username.focus();
-        return false; 
+    // Check the field has a value
+    if (checkBlankField(uid) == false) {
+        ++errorCt;
+    } 
+    // Check that the username is sufficiently long (min 3 chars)
+    else if (uid.value.length < 3) {
+        document.getElementById('usernameError').innerHTML='Usernames must be at least 3 characters long. Please try again';
+        ++errorCt;
+    } 
+    // Check that the username is only digits, upper and lower case letters and underscores
+    else if (!re.test(uid.value)) { 
+        document.getElementById('usernameError').innerHTML="Username must contain only letters, numbers and underscores. Please try again"; 
+        ++errorCt;
     }
- 
+
+    //Check Email
+    // Check the field has a value
+    if (checkBlankField(email) == false) {
+        ++errorCt;
+    }
+
+    //Check Password
+    var re = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/; 
+    // Check the field has a value
+    if (checkBlankField(password) == false) {
+        ++errorCt;
+    }
     // Check that the password is sufficiently long (min 6 chars)
     // The check is duplicated below, but this is included to give more
     // specific guidance to the user
-    if (password.value.length < 6) {
-        alert('Passwords must be at least 6 characters long.  Please try again');
-        form.password.focus();
-        return false;
+    else if (password.value.length < 6) {
+        document.getElementById('passwordError').innerHTML='Passwords must be at least 6 characters long. Please try again';
+        ++errorCt;
     }
- 
     // At least one number, one lowercase and one uppercase letter 
     // At least six characters 
- 
-    var re = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/; 
-    if (!re.test(password.value)) {
-        alert('Passwords must contain at least one number, one lowercase and one uppercase letter.  Please try again');
-        return false;
+    else if (!re.test(password.value)) {
+        document.getElementById('passwordError').innerHTML='Passwords must contain at least one number, one lowercase and one uppercase letter. Please try again';
+        ++errorCt;
     }
- 
+
+    //Check Password Confirmation
+    // Check the field has a value
+    if (checkBlankField(conf) == false) {
+        ++errorCt;
+    }
     // Check password and confirmation are the same
-    if (password.value != conf.value) {
-        alert('Your password and confirmation do not match. Please try again');
-        form.password.focus();
-        return false;
+    else if (password.value != conf.value) {
+        document.getElementById('confirmpwdError').innerHTML='Your password and confirmation do not match. Please try again';
+        ++errorCt;
     }
- 
+
+    if (errorCt > 0) {
+        form.username.focus();
+        return false
+    }
+
     // Create a new element input, this will be our hashed password field. 
     var p = document.createElement("input");
  
@@ -76,4 +93,14 @@ function regformhash(form, uid, email, password, conf) {
     // Finally submit the form. 
     form.submit();
     return true;
+}
+
+function checkBlankField(field) {
+    var blankErrorMsg = "*This is a required field.";
+    
+    if (field.value === null || field.value === '') {
+        var errMsg = field.name + "Error";
+        document.getElementById(errMsg).innerHTML=blankErrorMsg;
+        return false;
+    }
 }

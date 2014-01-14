@@ -21,3 +21,6 @@
         </div>
     </div>
 </div>
+<body>
+    <h2><img border="0" src="images/ferret.jpg" alt="ferret clip art" width="57" height="50" align="middle">PHERRET</h2>
+</body>
