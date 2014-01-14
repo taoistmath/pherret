@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 
-<?php include('includes/head.php'); ?>
+<?php 
+include('includes/head.php');
 
-<?php
-session_start();
-
-if ($_SESSION['username'] == NULL)
-    header("Location: /login.php");
+sec_session_start();
 
 ////Get the branch
 //$branch = $_GET['gitBranch'];
@@ -16,9 +13,6 @@ if ($_SESSION['username'] == NULL)
 //Set up paths
 //$repoLoc = '/var/www/helios/tools/regression/features/dandb/mixed_stack'; //Set to absolute path to behat.yml file in your repository
 //shell_exec("cp -r " . $repoLoc . " ./tools/regression/features/dandb");
-
-//Get username
-$username = $_SESSION["username"];
 
 //Get the environment
 if (isset($_GET['environment'])) {
@@ -39,6 +33,8 @@ if (isset($_GET['parallel'])) {
 <body>
 
 <?php include('includes/header.php'); ?>
+
+<?php if (login_check($mysqli) == true) : ?>
 
 <div class="container">
 
@@ -150,6 +146,13 @@ if (isset($_GET['parallel'])) {
     </form>
 
 </div>
+
+<?php else : ?>
+    <p>
+        <span class="error">You are not authorized to access this page.</span> Please <a href="login.php">login</a>.
+    </p>
+<?php endif; ?>
+
 
 <?php include('includes/footer.php'); ?>
 

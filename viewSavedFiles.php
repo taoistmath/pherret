@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 
-<?php include('includes/head.php'); ?>
+<?php 
+include('includes/head.php');
 
-<?php
+sec_session_start();
 
-session_start();
 $_SESSION['viewSavedFiles'] = $_GET['viewSavedFiles'];
 ?>
 
@@ -13,6 +13,7 @@ $_SESSION['viewSavedFiles'] = $_GET['viewSavedFiles'];
 
 <?php include('includes/header.php'); ?>
 
+<?php if (login_check($mysqli) == true) : ?>
 
 <div class="container">
 
@@ -61,6 +62,12 @@ $_SESSION['viewSavedFiles'] = $_GET['viewSavedFiles'];
     </form>
 
 </div>
+
+<?php else : ?>
+    <p>
+        <span class="error">You are not authorized to access this page.</span> Please <a href="login.php">login</a>.
+    </p>
+<?php endif; ?>
 
 <?php include('includes/footer.php'); ?>
 

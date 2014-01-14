@@ -1,5 +1,3 @@
-<script>
-
 function checkCheckBoxes(form,action) {
     //Count number of features selected
     var flag = 0;
@@ -65,5 +63,3 @@ function verifyDelete(form,action)
     else
         return false
 }
-
-</script>

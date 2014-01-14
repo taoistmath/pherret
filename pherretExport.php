@@ -3,20 +3,16 @@
 <?php include('includes/head.php'); ?>
 
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: gfogelberg
- * Date: 6/12/13
- * Time: 9:48 PM
- * To change this template use File | Settings | File Templates.
- */
-session_start();
+
+sec_session_start();
 
 ?>
 
 <body>
 
 <?php include('includes/header.php'); ?>
+
+<?php if (login_check($mysqli) == true) : ?>
 
 <div class="container">
 
@@ -41,6 +37,12 @@ session_start();
         </tbody>
     </table>
 </div>
+
+<?php else : ?>
+    <p>
+        <span class="error">You are not authorized to access this page.</span> Please <a href="login.php">login</a>.
+    </p>
+<?php endif; ?>
 
 <?php include('includes/footer.php'); ?>
 

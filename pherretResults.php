@@ -3,15 +3,8 @@
 <?php include('includes/head.php'); ?>
 
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: gfogelberg
- * Date: 9/5/13
- * Time: 1:56 PM
- * To change this template use File | Settings | File Templates.
- */
 
-session_start();
+sec_session_start();
 
 date_default_timezone_set('America/Los_Angeles');
 
@@ -20,6 +13,8 @@ date_default_timezone_set('America/Los_Angeles');
 <body>
 
 <?php include('includes/header.php'); ?>
+
+<?php if (login_check($mysqli) == true) : ?>
 
 <div class="container">
 
@@ -38,6 +33,12 @@ date_default_timezone_set('America/Los_Angeles');
     </form>
     
 </div>
+
+<?php else : ?>
+    <p>
+        <span class="error">You are not authorized to access this page.</span> Please <a href="login.php">login</a>.
+    </p>
+<?php endif; ?>
 
 <?php include('includes/footer.php'); ?>
 
@@ -207,7 +208,7 @@ function removeFilterFromFeature($features)
 function runRegression()
 {
     //Get username
-    $username = $_SESSION["username"];
+    $username = $_SESSION['username'];
     if (!$username == "") {
 
         $features = checkmarkValues(); //Get the selected features

@@ -1,6 +1,7 @@
 <?php 
-include('helpers/variables.php');
-include('helpers/javascript.php');
+include_once 'includes/db_connect.php';
+include_once 'includes/functions.php';
+include 'helpers/variables.php';
 // include('helpers/functions.php');
 ?>
 
@@ -32,6 +33,10 @@ include('helpers/javascript.php');
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="./assets/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="./assets/ico/apple-touch-icon-57-precomposed.png">
     <link rel="shortcut icon" href="./assets/ico/favicon.png">
+
+    <script type="text/JavaScript" src="js/sha512.js"></script> 
+    <script type="text/JavaScript" src="js/forms.js"></script> 
+    <script type="text/JavaScript" src="js/pherret.js"></script> 
 
     <h2><img border="0" src="images/ferret.jpg" alt="ferret clip art" width="57" height="50" align="middle">PHERRET</h2>
 
