@@ -3,15 +3,8 @@
 
 <?php
 include('includes/head.php');
-include_once 'includes/process_login.php'; 
  
 sec_session_start();
- 
-if (login_check($mysqli) == true) {
-    $logged = 'in';
-} else {
-    $logged = 'out';
-}
 ?>
 
 <body>

@@ -14,11 +14,6 @@ include('includes/header.php');
 
 <div class="container">
 
-<?php
-if (!empty($error_msg)) {
-    echo $error_msg;
-}
-?>
     <ul>
         <li>Usernames may contain only digits, upper and lower case letters and underscores</li>
         <li>Emails must have a valid email format</li>
@@ -38,6 +33,11 @@ if (!empty($error_msg)) {
         <span style="color:red;" id="usernameError"></span>
         <br>
         <input id="email" class="span2" name="email" type="text" class="input-block-level" placeholder="Email" />
+        <?php
+            if (!empty($error_msg)) {
+                echo $error_msg;
+            }
+        ?>
         <span style="color:red;" id="emailError"></span>
         <br>
         <input id="password" class="span2" name="password" type="password" class="input-block-level" placeholder="Password" />

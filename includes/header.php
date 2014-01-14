@@ -1,4 +1,10 @@
-<div id="header">
+<?php
+include('includes/head.php');
+ 
+sec_session_start();
+ 
+?>
+
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="navbar-inner">
             <div class="container">
@@ -14,7 +20,11 @@
                         <!--                    <li class="active"><a href="#">Home</a></li>-->
                         <!--                    <li><a href="#about">About</a></li>-->
                         <!--                    <li><a href="#contact">Contact</a></li>-->
-                    <li><a href="/includes/logout.php">Sign Out</a></li>
+                        <?php
+                        if (login_check($mysqli) == true) {
+                            echo '<li><a href="/includes/logout.php">Sign Out</a></li>';
+                        }
+                        ?>
                     </ul>
                 </div>
             </div>
