@@ -13,7 +13,8 @@ sec_session_start();
 include('includes/header.php');
 
 if (isset($_GET['error'])) {
-    echo '<p class="error" style="color:red;">Error Logging In! Please verify your Email and Password are correct</p>';
+    echo '<p class="error" style="color:red;">Error Logging In! Please verify your Email and Password are correct.</p>
+          <p class="error" style="color:red;"> If you do not have an account, please Register below.</p>';
 }
 ?> 
 
