@@ -2,7 +2,8 @@
 <html lang="en">
 
 <?php
-include('includes/head.php'); 
+include('includes/head.php');
+include_once 'includes/process_login.php'; 
  
 sec_session_start();
  
@@ -19,7 +20,7 @@ if (login_check($mysqli) == true) {
 include('includes/header.php');
 
 if (isset($_GET['error'])) {
-    echo '<p class="error">Error Logging In!</p>';
+    echo '<p class="error" style="color:red;">Error Logging In! Please verify your Email and Password are correct</p>';
 }
 ?> 
 
@@ -28,8 +29,8 @@ if (isset($_GET['error'])) {
     <form id="signin" class="form-signin" name="signin" method="POST" action="includes/process_login.php" >
         <input id="email" class="span2" name="email" type="text" class="input-block-level" placeholder="Email">
         <br>
-        <span style="color:red;" id="emailError"></span>
-        <input id="password" class="span2" type="password" class="input-block-level" placeholder="Password">
+        <input id="password" class="span2" name="password" type="password" class="input-block-level" placeholder="Password">
+        <br>
 <!--         <label class="checkbox">
             <input type="checkbox" value="remember-me"> Remember me
         </label> -->

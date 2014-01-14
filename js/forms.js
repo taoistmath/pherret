@@ -31,8 +31,11 @@ function regformhash(form, uid, email, password, conf) {
     } 
     // Check that the username is only digits, upper and lower case letters and underscores
     else if (!re.test(uid.value)) { 
-        document.getElementById('usernameError').innerHTML="Username must contain only letters, numbers and underscores. Please try again"; 
+        document.getElementById('usernameError').innerHTML='Username must contain only letters, numbers and underscores. Please try again'; 
         ++errorCt;
+    }
+    else { 
+        document.getElementById('usernameError').innerHTML=''; 
     }
 
     //Check Email
@@ -60,6 +63,9 @@ function regformhash(form, uid, email, password, conf) {
         document.getElementById('passwordError').innerHTML='Passwords must contain at least one number, one lowercase and one uppercase letter. Please try again';
         ++errorCt;
     }
+    else {
+        document.getElementById('passwordError').innerHTML='';
+    }
 
     //Check Password Confirmation
     // Check the field has a value
@@ -70,6 +76,9 @@ function regformhash(form, uid, email, password, conf) {
     else if (password.value != conf.value) {
         document.getElementById('confirmpwdError').innerHTML='Your password and confirmation do not match. Please try again';
         ++errorCt;
+    }
+    else {
+        document.getElementById('confirmpwdError').innerHTML='';
     }
 
     if (errorCt > 0) {
@@ -96,7 +105,7 @@ function regformhash(form, uid, email, password, conf) {
 }
 
 function checkBlankField(field) {
-    var blankErrorMsg = "*This is a required field.";
+    var blankErrorMsg = '*This is a required field.';
     
     if (field.value === null || field.value === '') {
         var errMsg = field.name + "Error";
