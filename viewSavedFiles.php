@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-
 <?php 
 include('includes/head.php');
 
-sec_session_start();
-
 $_SESSION['viewSavedFiles'] = $_GET['viewSavedFiles'];
 ?>
+
+<!DOCTYPE html>
 
 <body>
 

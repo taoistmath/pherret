@@ -1,15 +1,11 @@
-<!DOCTYPE html>
-
-<?php include('includes/head.php'); ?>
-
-<?php
-
-sec_session_start();
+<?php include('includes/head.php'); 
 
 $resultsFile = $_SESSION['resultsFile'];
 $saveResults = $_GET['saveResults'];
 
 ?>
+
+<!DOCTYPE html>
 
 <body>
 

@@ -7,4 +7,3 @@ $featureLoc = 'features/dandb'; //Set to local repo folder that contains feature
 $localRepo = $behatLoc . $featureLoc; //Set to local repo folder that contains features
 
 ?>
-

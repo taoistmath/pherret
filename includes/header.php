@@ -1,8 +1,6 @@
 <?php
 include('includes/head.php');
  
-sec_session_start();
- 
 ?>
 
     <div class="navbar navbar-inverse navbar-fixed-top">

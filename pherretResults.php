@@ -1,20 +1,22 @@
-<!DOCTYPE html>
+<?php 
 
-<?php include('includes/head.php'); ?>
-
-<?php
-
-sec_session_start();
+include 'includes/head.php';
 
 date_default_timezone_set('America/Los_Angeles');
 
 ?>
 
+<!DOCTYPE html>
+
 <body>
 
-<?php include('includes/header.php'); ?>
+<?php 
 
-<?php if (login_check($mysqli) == true) : ?>
+include('includes/header.php'); 
+
+if (login_check($mysqli) == true) : 
+
+?>
 
 <div class="container">
 
@@ -80,7 +82,7 @@ function displayResults($resultsFile)
                     <div class="span4">
                         <div class="col-lg-6">
                             <div class="input-group">
-                                <input type="text" class="form-control" id="saveResults" name="saveResults" value="'.$_SESSION["resultsFile"].'">
+                                <input type="text" class="form-control span2" id="saveResults" name="saveResults" value="'.$_SESSION["resultsFile"].'">
                                 <span class="input-group-btn">
                                     <button class="btn btn-success" type="submit" onclick="return validateField(this.form,\'saveResults\',\'saveFile.php\')">Save Results File</button>
                                     <span style="color:red;" id="saveResultsError"></span>

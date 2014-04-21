@@ -1,9 +1,5 @@
-<!DOCTYPE html>
-
 <?php 
 include('includes/head.php');
-
-sec_session_start();
 
 ////Get the branch
 //$branch = $_GET['gitBranch'];
@@ -29,6 +25,8 @@ if (isset($_GET['parallel'])) {
     $parallel = strtolower($_GET['parallel']);
 }
 ?>
+
+<!DOCTYPE html>
 
 <body>
 
@@ -114,7 +112,7 @@ if (isset($_GET['parallel'])) {
                 <div class="span4">
                     <div class="col-lg-6">
                         <div class="input-group">
-                            <input type="text" class="form-control" id="importFilename" name="importFilename" placeholder="Test Suite Filename">
+                            <input type="text" class="form-control span2" id="importFilename" name="importFilename" placeholder="Test Suite Filename">
                             <span class="input-group-btn">
                                 <button class="btn btn-default" type="submit" onclick="return validateField(this.form,'importFilename','pherretResults.php')">Run Test Suite</button>
                                 <span style="color:red;" id="importFilenameError"></span>
@@ -131,7 +129,7 @@ if (isset($_GET['parallel'])) {
                 <div class="span4">
                     <div class="col-lg-6">
                         <div class="input-group">
-                            <input type="text" class="form-control" id="exportFilename" name="exportFilename" placeholder="Test Suite Filename">
+                            <input type="text" class="form-control span2" id="exportFilename" name="exportFilename" placeholder="Test Suite Filename">
                             <span class="input-group-btn">
                                 <button class="btn btn-default" type="submit" onclick="return validateField(this.form,'exportFilename','pherretExport.php')">Save Test Suite</button>
                                 <span style="color:red;" id="exportFilenameError"></span>

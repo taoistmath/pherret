@@ -2,6 +2,8 @@
 include_once 'includes/db_connect.php';
 include_once 'includes/functions.php';
 include 'helpers/variables.php';
+sec_session_start();
+
 // include('helpers/functions.php');
 ?>
 

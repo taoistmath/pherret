@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-
 <?php include('includes/head.php'); ?>
 
-<?php
-
-sec_session_start();
-
-?>
+<!DOCTYPE html>
 
 <body>
 

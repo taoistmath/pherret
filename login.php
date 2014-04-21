@@ -1,16 +1,14 @@
+<?php
+include('includes/header.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-
-<?php
-include('includes/head.php');
- 
-sec_session_start();
-?>
 
 <body>
 
 <?php
-include('includes/header.php');
+#include('includes/header.php');
 
 if (isset($_GET['error'])) {
     echo '<p class="error" style="color:red;">Error Logging In! Please verify your Email and Password are correct.</p>

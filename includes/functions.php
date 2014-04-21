@@ -1,16 +1,18 @@
 <?php
 include_once 'psl-config.php';
+    session_start();            // Start the PHP session 
+    session_regenerate_id();    // regenerated the session, delete the old one. 
  
 function sec_session_start() {
+    if (ini_set('session.use_only_cookies', 1) === FALSE) {
+        header("Location: ../error.php?err=Could not initiate a safe session (ini_set)");
+        exit();
+    }
     $session_name = 'sec_session_id';   // Set a custom session name
     $secure = SECURE;
     // This stops JavaScript being able to access the session id.
     $httponly = true;
     // Forces sessions to only use cookies.
-    if (ini_set('session.use_only_cookies', 1) === FALSE) {
-        header("Location: ../error.php?err=Could not initiate a safe session (ini_set)");
-        exit();
-    }
     // Gets current cookies params.
     $cookieParams = session_get_cookie_params();
     session_set_cookie_params($cookieParams["lifetime"],
@@ -19,15 +21,13 @@ function sec_session_start() {
         $secure,
         $httponly);
     // Sets the session name to the one set above.
-    session_name($session_name);
-    session_start();            // Start the PHP session 
-    session_regenerate_id();    // regenerated the session, delete the old one. 
+    session_name($session_name);#
 }
 
 function login($email, $password, $mysqli) {
     // Using prepared statements means that SQL injection is not possible. 
     if ($stmt = $mysqli->prepare("SELECT id, username, password, salt 
-        FROM users
+        FROM members
        WHERE email = ?
         LIMIT 1")) {
         $stmt->bind_param('s', $email);  // Bind "$email" to parameter.
@@ -123,7 +123,7 @@ function login_check($mysqli) {
         $user_browser = $_SERVER['HTTP_USER_AGENT'];
  
         if ($stmt = $mysqli->prepare("SELECT password 
-                                      FROM users 
+                                      FROM members 
                                       WHERE id = ? LIMIT 1")) {
             // Bind "$user_id" to parameter. 
             $stmt->bind_param('i', $user_id);
@@ -187,4 +187,5 @@ function esc_url($url) {
         return $url;
     }
 }
+
 ?>

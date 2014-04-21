@@ -1,10 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <?php
-include('includes/head.php'); 
- 
-sec_session_start();
+include('includes/header.php'); 
  
 if (login_check($mysqli) == true) {
     $logged = 'in';
@@ -13,9 +8,14 @@ if (login_check($mysqli) == true) {
 }
 ?>
 
+<!DOCTYPE html>
+<html lang="en">
+
 <body>
 
-<?php include('includes/header.php'); ?> 
+<?php 
+#include('includes/header.php'); 
+?> 
 
         <h1>Registration successful!</h1>
         <p>Please return to the <a href="login.php">login page</a></p>

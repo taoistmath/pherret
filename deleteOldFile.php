@@ -1,7 +1,5 @@
 <?php
-include_once 'includes/functions.php';
-
-sec_session_start();
+include_once 'includes/head.php';
 
 $viewSavedFiles = $_SESSION["viewSavedFiles"];
 
