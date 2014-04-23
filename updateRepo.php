@@ -1,4 +1,8 @@
 <?php
+include_once 'includes/db_connect.php';
+include_once 'includes/functions.php';
+include_once 'helpers/variables.php';
+
 sec_session_start();
 
 $repoLoc = '/var/www/helios/tools/regression/features'; //Set to absolute path to behat.yml file in your repository

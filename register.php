@@ -1,6 +1,6 @@
 <?php
-include('includes/header.php');
 include_once 'includes/register.inc.php';
+include_once 'includes/functions.php';
 ?>
 
 <!DOCTYPE html>
@@ -9,7 +9,7 @@ include_once 'includes/register.inc.php';
 <body>
 
 <?php
-#include('includes/header.php');
+include('includes/header.php');
 ?> 
 
 <div class="container">

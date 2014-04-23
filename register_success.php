@@ -1,11 +1,7 @@
 <?php
-include('includes/header.php'); 
- 
-if (login_check($mysqli) == true) {
-    $logged = 'in';
-} else {
-    $logged = 'out';
-}
+include_once 'includes/db_connect.php';
+include_once 'includes/functions.php';
+include_once 'helpers/variables.php';
 ?>
 
 <!DOCTYPE html>
@@ -13,8 +9,8 @@ if (login_check($mysqli) == true) {
 
 <body>
 
-<?php 
-#include('includes/header.php'); 
+<?php
+include('includes/header.php');
 ?> 
 
         <h1>Registration successful!</h1>

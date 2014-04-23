@@ -1,5 +1,9 @@
-<?php 
-include('includes/head.php');
+<?php
+include_once 'includes/db_connect.php';
+include_once 'includes/functions.php';
+include_once 'helpers/variables.php';
+
+sec_session_start();
 
 ////Get the branch
 //$branch = $_GET['gitBranch'];
