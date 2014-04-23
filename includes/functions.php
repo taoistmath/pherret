@@ -27,7 +27,7 @@ function sec_session_start() {
 function login($email, $password, $mysqli) {
     // Using prepared statements means that SQL injection is not possible. 
     if ($stmt = $mysqli->prepare("SELECT id, username, password, salt 
-        FROM users
+        FROM members
        WHERE email = ?
         LIMIT 1")) {
         $stmt->bind_param('s', $email);  // Bind "$email" to parameter.
@@ -123,7 +123,7 @@ function login_check($mysqli) {
         $user_browser = $_SERVER['HTTP_USER_AGENT'];
  
         if ($stmt = $mysqli->prepare("SELECT password 
-                                      FROM users 
+                                      FROM members 
                                       WHERE id = ? LIMIT 1")) {
             // Bind "$user_id" to parameter. 
             $stmt->bind_param('i', $user_id);
@@ -187,4 +187,3 @@ function esc_url($url) {
         return $url;
     }
 }
-?>

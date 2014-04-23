@@ -11,14 +11,14 @@ if (isset($_POST['username'], $_POST['email'], $_POST['p'])) {
     $email = filter_var($email, FILTER_VALIDATE_EMAIL);
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         // Not a valid email
-        $error_msg .= '<span class="error" style="color:red;">The email address you entered is not valid</span>';
+        $error_msg .= '<p class="error">The email address you entered is not valid</p>';
     }
  
     $password = filter_input(INPUT_POST, 'p', FILTER_SANITIZE_STRING);
     if (strlen($password) != 128) {
         // The hashed pwd should be 128 characters long.
         // If it's not, something really odd has happened
-        $error_msg .= '<span class="error" style="color:red;">Invalid password configuration.</span>';
+        $error_msg .= '<p class="error">Invalid password configuration.</p>';
     }
  
     // Username validity and password validity have been checked client side.
@@ -26,7 +26,7 @@ if (isset($_POST['username'], $_POST['email'], $_POST['p'])) {
     // breaking these rules.
     //
  
-    $prep_stmt = "SELECT id FROM users WHERE email = ? LIMIT 1";
+    $prep_stmt = "SELECT id FROM members WHERE email = ? LIMIT 1";
     $stmt = $mysqli->prepare($prep_stmt);
  
     if ($stmt) {
@@ -36,10 +36,10 @@ if (isset($_POST['username'], $_POST['email'], $_POST['p'])) {
  
         if ($stmt->num_rows == 1) {
             // A user with this email address already exists
-            $error_msg .= '<span class="error">A user with this email address already exists.</span>';
+            $error_msg .= '<p class="error">A user with this email address already exists.</p>';
         }
     } else {
-        $error_msg .= '<span class="error">Database error</span>';
+        $error_msg .= '<p class="error">Database error</p>';
     }
  
     // TODO: 
@@ -55,7 +55,7 @@ if (isset($_POST['username'], $_POST['email'], $_POST['p'])) {
         $password = hash('sha512', $password . $random_salt);
  
         // Insert the new user into the database 
-        if ($insert_stmt = $mysqli->prepare("INSERT INTO users (username, email, password, salt) VALUES (?, ?, ?, ?)")) {
+        if ($insert_stmt = $mysqli->prepare("INSERT INTO members (username, email, password, salt) VALUES (?, ?, ?, ?)")) {
             $insert_stmt->bind_param('ssss', $username, $email, $password, $random_salt);
             // Execute the prepared query.
             if (! $insert_stmt->execute()) {
@@ -65,4 +65,3 @@ if (isset($_POST['username'], $_POST['email'], $_POST['p'])) {
         header('Location: ./register_success.php');
     }
 }
-?>

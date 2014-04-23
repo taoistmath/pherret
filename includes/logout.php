@@ -1,8 +1,7 @@
 <?php
 include_once 'functions.php';
-
 sec_session_start();
-
+ 
 // Unset all session values 
 $_SESSION = array();
  
@@ -19,6 +18,5 @@ setcookie(session_name(),
  
 // Destroy session 
 session_destroy();
-
 header('Location: ../login.php');
 ?>
