@@ -54,7 +54,7 @@ include('includes/header.php');
                             this.form.confirmpwd);">Register</button>
     </form>
     
-    <p>Return to the <a href="login.php">login page</a>.</p>
+    <p>Return to the <a href="index.php">login page</a>.</p>
 
 </div>
 

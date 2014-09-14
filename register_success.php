@@ -18,7 +18,7 @@ if (login_check($mysqli) == true) {
 <?php include('includes/header.php'); ?> 
 
         <h1>Registration successful!</h1>
-        <p>Please return to the <a href="login.php">login page</a></p>
+        <p>Please return to the <a href="index.php">login page</a></p>
 
 <?php include('includes/footer.php'); ?>
 

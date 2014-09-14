@@ -41,7 +41,7 @@ $saveResults = $_GET['saveResults'];
 
 <?php else : ?>
     <p>
-        <span class="error">You are not authorized to access this page.</span> Please <a href="login.php">login</a>.
+        <span class="error">You are not authorized to access this page.</span> Please <a href="index.php">login</a>.
     </p>
 <?php endif; ?>
 
